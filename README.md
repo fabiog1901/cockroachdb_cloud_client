@@ -23,24 +23,19 @@ client = AuthenticatedClient(base_url="https://api.example.com", token="SuperSec
 Now call your endpoint and use your models:
 
 ```python
-from cockroachdb_cloud_client.models import MyDataModel
-from cockroachdb_cloud_client.api.my_tag import get_my_data_model
+from cockroachdb_cloud_client import AuthenticatedClient
+from cockroachdb_cloud_client.models import ListClustersResponse
+from cockroachdb_cloud_client.api.cockroach_cloud import cockroach_cloud_list_clusters
 from cockroachdb_cloud_client.types import Response
+from pprint import pprint
+import json
 
-my_data: MyDataModel = get_my_data_model.sync(client=client)
-# or if you need more info (e.g. status_code)
-response: Response[MyDataModel] = get_my_data_model.sync_detailed(client=client)
-```
 
-Or do the same thing with an async version:
+client = AuthenticatedClient(base_url="https://cockroachlabs.cloud", token="CC-xxxx-yyyy-zzzz")
 
-```python
-from cockroachdb_cloud_client.models import MyDataModel
-from cockroachdb_cloud_client.api.my_tag import get_my_data_model
-from cockroachdb_cloud_client.types import Response
+resp: Response[ListClustersResponse] = cockroach_cloud_list_clusters.sync_detailed(client=client)
 
-my_data: MyDataModel = await get_my_data_model.asyncio(client=client)
-response: Response[MyDataModel] = await get_my_data_model.asyncio_detailed(client=client)
+pprint(json.loads(resp.content))
 ```
 
 By default, when you're calling an HTTPS API it will attempt to verify that SSL is working correctly. Using certificate verification is highly recommended most of the time, but sometimes you may need to authenticate to a server (especially an internal server) using a custom certificate bundle.
@@ -74,4 +69,3 @@ Things to know:
 1. All path/query params, and bodies become method arguments.
 1. If your endpoint had any tags on it, the first tag will be used as a module name for the function (my_tag above)
 1. Any endpoint which did not have a tag will be in `cockroachdb_cloud_client.api.default`
-
