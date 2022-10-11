@@ -52,7 +52,9 @@ class CockroachCloudEnableLogExportEnableLogExportRequest:
         d = src_dict.copy()
         _type = d.pop("type", UNSET)
         type: Union[Unset, LogExportType]
-        if isinstance(_type, Unset):
+        if _type is None:
+            type = None
+        elif isinstance(_type, Unset):
             type = UNSET
         else:
             type = LogExportType(_type)

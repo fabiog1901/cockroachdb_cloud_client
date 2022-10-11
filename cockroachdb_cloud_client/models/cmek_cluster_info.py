@@ -78,7 +78,9 @@ class CMEKClusterInfo:
         d = src_dict.copy()
         _status = d.pop("status", UNSET)
         status: Union[Unset, CMEKStatus]
-        if isinstance(_status, Unset):
+        if _status is None:
+            status = None
+        elif isinstance(_status, Unset):
             status = UNSET
         else:
             status = CMEKStatus(_status)

@@ -84,7 +84,9 @@ class LogExportClusterInfo:
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, LogExportStatus]
-        if isinstance(_status, Unset):
+        if _status is None:
+            status = None
+        elif isinstance(_status, Unset):
             status = UNSET
         else:
             status = LogExportStatus(_status)
@@ -93,21 +95,27 @@ class LogExportClusterInfo:
 
         _spec = d.pop("spec", UNSET)
         spec: Union[Unset, LogExportClusterSpecification]
-        if isinstance(_spec, Unset):
+        if _spec is None:
+            spec = None
+        elif isinstance(_spec, Unset):
             spec = UNSET
         else:
             spec = LogExportClusterSpecification.from_dict(_spec)
 
         _created_at = d.pop("created_at", UNSET)
         created_at: Union[Unset, datetime.datetime]
-        if isinstance(_created_at, Unset):
+        if _created_at is None:
+            created_at = None
+        elif isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
         updated_at: Union[Unset, datetime.datetime]
-        if isinstance(_updated_at, Unset):
+        if _updated_at is None:
+            updated_at = None
+        elif isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
             updated_at = isoparse(_updated_at)

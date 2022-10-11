@@ -62,7 +62,9 @@ class ListAllowlistEntriesResponse:
 
         _pagination = d.pop("pagination", UNSET)
         pagination: Union[Unset, KeysetPaginationResponse]
-        if isinstance(_pagination, Unset):
+        if _pagination is None:
+            pagination = None
+        elif isinstance(_pagination, Unset):
             pagination = UNSET
         else:
             pagination = KeysetPaginationResponse.from_dict(_pagination)

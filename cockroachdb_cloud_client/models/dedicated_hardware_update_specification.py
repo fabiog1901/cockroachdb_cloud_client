@@ -49,7 +49,9 @@ class DedicatedHardwareUpdateSpecification:
         d = src_dict.copy()
         _machine_spec = d.pop("machine_spec", UNSET)
         machine_spec: Union[Unset, DedicatedMachineTypeSpecification]
-        if isinstance(_machine_spec, Unset):
+        if _machine_spec is None:
+            machine_spec = None
+        elif isinstance(_machine_spec, Unset):
             machine_spec = UNSET
         else:
             machine_spec = DedicatedMachineTypeSpecification.from_dict(_machine_spec)

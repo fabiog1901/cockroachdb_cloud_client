@@ -158,21 +158,27 @@ class Cluster:
 
         _created_at = d.pop("created_at", UNSET)
         created_at: Union[Unset, datetime.datetime]
-        if isinstance(_created_at, Unset):
+        if _created_at is None:
+            created_at = None
+        elif isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
         updated_at: Union[Unset, datetime.datetime]
-        if isinstance(_updated_at, Unset):
+        if _updated_at is None:
+            updated_at = None
+        elif isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
             updated_at = isoparse(_updated_at)
 
         _deleted_at = d.pop("deleted_at", UNSET)
         deleted_at: Union[Unset, datetime.datetime]
-        if isinstance(_deleted_at, Unset):
+        if _deleted_at is None:
+            deleted_at = None
+        elif isinstance(_deleted_at, Unset):
             deleted_at = UNSET
         else:
             deleted_at = isoparse(_deleted_at)

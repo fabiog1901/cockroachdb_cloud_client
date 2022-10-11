@@ -64,14 +64,18 @@ class DedicatedClusterUpdateSpecification:
         d = src_dict.copy()
         _region_nodes = d.pop("region_nodes", UNSET)
         region_nodes: Union[Unset, DedicatedClusterUpdateSpecificationRegionNodes]
-        if isinstance(_region_nodes, Unset):
+        if _region_nodes is None:
+            region_nodes = None
+        elif isinstance(_region_nodes, Unset):
             region_nodes = UNSET
         else:
             region_nodes = DedicatedClusterUpdateSpecificationRegionNodes.from_dict(_region_nodes)
 
         _hardware = d.pop("hardware", UNSET)
         hardware: Union[Unset, DedicatedHardwareUpdateSpecification]
-        if isinstance(_hardware, Unset):
+        if _hardware is None:
+            hardware = None
+        elif isinstance(_hardware, Unset):
             hardware = UNSET
         else:
             hardware = DedicatedHardwareUpdateSpecification.from_dict(_hardware)

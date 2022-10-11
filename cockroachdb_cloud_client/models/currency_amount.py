@@ -43,7 +43,9 @@ class CurrencyAmount:
 
         _currency = d.pop("currency", UNSET)
         currency: Union[Unset, Currency]
-        if isinstance(_currency, Unset):
+        if _currency is None:
+            currency = None
+        elif isinstance(_currency, Unset):
             currency = UNSET
         else:
             currency = Currency(_currency)

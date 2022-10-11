@@ -60,14 +60,18 @@ class KeysetPaginationRequest:
 
         _as_of_time = d.pop("as_of_time", UNSET)
         as_of_time: Union[Unset, datetime.datetime]
-        if isinstance(_as_of_time, Unset):
+        if _as_of_time is None:
+            as_of_time = None
+        elif isinstance(_as_of_time, Unset):
             as_of_time = UNSET
         else:
             as_of_time = isoparse(_as_of_time)
 
         _sort_order = d.pop("sort_order", UNSET)
         sort_order: Union[Unset, SortOrder]
-        if isinstance(_sort_order, Unset):
+        if _sort_order is None:
+            sort_order = None
+        elif isinstance(_sort_order, Unset):
             sort_order = UNSET
         else:
             sort_order = SortOrder(_sort_order)

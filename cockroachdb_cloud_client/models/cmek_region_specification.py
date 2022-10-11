@@ -48,7 +48,9 @@ class CMEKRegionSpecification:
 
         _key_spec = d.pop("key_spec", UNSET)
         key_spec: Union[Unset, CMEKKeySpecification]
-        if isinstance(_key_spec, Unset):
+        if _key_spec is None:
+            key_spec = None
+        elif isinstance(_key_spec, Unset):
             key_spec = UNSET
         else:
             key_spec = CMEKKeySpecification.from_dict(_key_spec)

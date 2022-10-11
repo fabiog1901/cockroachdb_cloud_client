@@ -36,7 +36,9 @@ class CockroachCloudSetAwsEndpointConnectionStateJsonBody:
         d = src_dict.copy()
         _status = d.pop("status", UNSET)
         status: Union[Unset, AWSEndpointConnectionStatus]
-        if isinstance(_status, Unset):
+        if _status is None:
+            status = None
+        elif isinstance(_status, Unset):
             status = UNSET
         else:
             status = AWSEndpointConnectionStatus(_status)

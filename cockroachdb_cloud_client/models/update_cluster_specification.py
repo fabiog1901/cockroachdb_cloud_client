@@ -49,14 +49,18 @@ class UpdateClusterSpecification:
         d = src_dict.copy()
         _dedicated = d.pop("dedicated", UNSET)
         dedicated: Union[Unset, DedicatedClusterUpdateSpecification]
-        if isinstance(_dedicated, Unset):
+        if _dedicated is None:
+            dedicated = None
+        elif isinstance(_dedicated, Unset):
             dedicated = UNSET
         else:
             dedicated = DedicatedClusterUpdateSpecification.from_dict(_dedicated)
 
         _serverless = d.pop("serverless", UNSET)
         serverless: Union[Unset, ServerlessClusterUpdateSpecification]
-        if isinstance(_serverless, Unset):
+        if _serverless is None:
+            serverless = None
+        elif isinstance(_serverless, Unset):
             serverless = UNSET
         else:
             serverless = ServerlessClusterUpdateSpecification.from_dict(_serverless)

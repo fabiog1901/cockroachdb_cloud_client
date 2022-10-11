@@ -52,7 +52,9 @@ class CMEKKeySpecification:
         d = src_dict.copy()
         _type = d.pop("type", UNSET)
         type: Union[Unset, CMEKKeyType]
-        if isinstance(_type, Unset):
+        if _type is None:
+            type = None
+        elif isinstance(_type, Unset):
             type = UNSET
         else:
             type = CMEKKeyType(_type)
