@@ -9,32 +9,38 @@ T = TypeVar("T", bound="Region")
 class Region:
     """
     Attributes:
+        internal_dns (str): InternalDns is the internal DNS name of the cluster within the cloud provider's network. It
+            is used to connect to the cluster with PrivateLink or VPC peering.
         name (str):
-        sql_dns (str):
-        ui_dns (str):
         node_count (int): NodeCount will be 0 for serverless clusters.
+        sql_dns (str): SqlDns is the DNS name of SQL interface of the cluster. It is used to connect to the cluster with
+            IP allowlisting.
+        ui_dns (str): UiDns is the DNS name used when connecting to the DB Console for the cluster.
     """
 
+    internal_dns: str
     name: str
+    node_count: int
     sql_dns: str
     ui_dns: str
-    node_count: int
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        internal_dns = self.internal_dns
         name = self.name
+        node_count = self.node_count
         sql_dns = self.sql_dns
         ui_dns = self.ui_dns
-        node_count = self.node_count
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "internal_dns": internal_dns,
                 "name": name,
+                "node_count": node_count,
                 "sql_dns": sql_dns,
                 "ui_dns": ui_dns,
-                "node_count": node_count,
             }
         )
 
@@ -43,19 +49,22 @@ class Region:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
+        internal_dns = d.pop("internal_dns")
+
         name = d.pop("name")
+
+        node_count = d.pop("node_count")
 
         sql_dns = d.pop("sql_dns")
 
         ui_dns = d.pop("ui_dns")
 
-        node_count = d.pop("node_count")
-
         region = cls(
+            internal_dns=internal_dns,
             name=name,
+            node_count=node_count,
             sql_dns=sql_dns,
             ui_dns=ui_dns,
-            node_count=node_count,
         )
 
         region.additional_properties = d

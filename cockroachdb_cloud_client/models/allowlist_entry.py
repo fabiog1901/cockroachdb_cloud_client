@@ -11,28 +11,28 @@ T = TypeVar("T", bound="AllowlistEntry")
 class AllowlistEntry:
     """
     Example:
-        {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'ui': True, 'sql': True, 'name': 'Example'}
+        {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'name': 'Example', 'sql': True, 'ui': True}
 
     Attributes:
         cidr_ip (str):
         cidr_mask (int):
-        ui (bool):
         sql (bool):
+        ui (bool):
         name (Union[Unset, str]):
     """
 
     cidr_ip: str
     cidr_mask: int
-    ui: bool
     sql: bool
+    ui: bool
     name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         cidr_ip = self.cidr_ip
         cidr_mask = self.cidr_mask
-        ui = self.ui
         sql = self.sql
+        ui = self.ui
         name = self.name
 
         field_dict: Dict[str, Any] = {}
@@ -41,8 +41,8 @@ class AllowlistEntry:
             {
                 "cidr_ip": cidr_ip,
                 "cidr_mask": cidr_mask,
-                "ui": ui,
                 "sql": sql,
+                "ui": ui,
             }
         )
         if name is not UNSET:
@@ -57,17 +57,17 @@ class AllowlistEntry:
 
         cidr_mask = d.pop("cidr_mask")
 
-        ui = d.pop("ui")
-
         sql = d.pop("sql")
+
+        ui = d.pop("ui")
 
         name = d.pop("name", UNSET)
 
         allowlist_entry = cls(
             cidr_ip=cidr_ip,
             cidr_mask=cidr_mask,
-            ui=ui,
             sql=sql,
+            ui=ui,
             name=name,
         )
 

@@ -13,18 +13,17 @@ class Status:
     """
     Attributes:
         code (Union[Unset, int]):
-        message (Union[Unset, str]):
         details (Union[Unset, List[Any]]):
+        message (Union[Unset, str]):
     """
 
     code: Union[Unset, int] = UNSET
-    message: Union[Unset, str] = UNSET
     details: Union[Unset, List[Any]] = UNSET
+    message: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         code = self.code
-        message = self.message
         details: Union[Unset, List[Dict[str, Any]]] = UNSET
         if not isinstance(self.details, Unset):
             details = []
@@ -33,15 +32,17 @@ class Status:
 
                 details.append(details_item)
 
+        message = self.message
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if code is not UNSET:
             field_dict["code"] = code
-        if message is not UNSET:
-            field_dict["message"] = message
         if details is not UNSET:
             field_dict["details"] = details
+        if message is not UNSET:
+            field_dict["message"] = message
 
         return field_dict
 
@@ -50,8 +51,6 @@ class Status:
         d = src_dict.copy()
         code = d.pop("code", UNSET)
 
-        message = d.pop("message", UNSET)
-
         details = []
         _details = d.pop("details", UNSET)
         for details_item_data in _details or []:
@@ -59,10 +58,12 @@ class Status:
 
             details.append(details_item)
 
+        message = d.pop("message", UNSET)
+
         status = cls(
             code=code,
-            message=message,
             details=details,
+            message=message,
         )
 
         status.additional_properties = d

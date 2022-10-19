@@ -17,6 +17,11 @@ class CMEKKeyInfo:
     specification.
 
         Attributes:
+            created_at (Union[Unset, datetime.datetime]):
+            spec (Union[Unset, CMEKKeySpecification]): CMEKKeySpecification contains all the details necessary to use a
+                customer-provided
+                encryption key. This involves the type/location of the key and the principal
+                to authenticate as when accessing it.
             status (Union[Unset, CMEKStatus]): CMEKStatus describes the current status of CMEK for an entire CRDB cluster
                 or a CMEK key within a region.
 
@@ -45,69 +50,63 @@ class CMEKKeyInfo:
                 CMEK is in the process of being revoked.
                  - REVOKE_FAILED: REVOKE_FAILED corresponds to the state of a cluster or region-level key
                 when CMEK has failed to be revoked.
-            user_message (Union[Unset, str]):
-            spec (Union[Unset, CMEKKeySpecification]): CMEKKeySpecification contains all the details necessary to use a
-                customer-provided
-                encryption key. This involves the type/location of the key and the principal
-                to authenticate as when accessing it.
-            created_at (Union[Unset, datetime.datetime]):
             updated_at (Union[Unset, datetime.datetime]):
+            user_message (Union[Unset, str]):
     """
 
-    status: Union[Unset, CMEKStatus] = UNSET
-    user_message: Union[Unset, str] = UNSET
-    spec: Union[Unset, CMEKKeySpecification] = UNSET
     created_at: Union[Unset, datetime.datetime] = UNSET
+    spec: Union[Unset, CMEKKeySpecification] = UNSET
+    status: Union[Unset, CMEKStatus] = UNSET
     updated_at: Union[Unset, datetime.datetime] = UNSET
+    user_message: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        status: Union[Unset, str] = UNSET
-        if not isinstance(self.status, Unset):
-            status = self.status.value
+        created_at: Union[Unset, str] = UNSET
+        if not isinstance(self.created_at, Unset):
+            created_at = self.created_at.isoformat()
 
-        user_message = self.user_message
         spec: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.spec, Unset):
             spec = self.spec.to_dict()
 
-        created_at: Union[Unset, str] = UNSET
-        if not isinstance(self.created_at, Unset):
-            created_at = self.created_at.isoformat()
+        status: Union[Unset, str] = UNSET
+        if not isinstance(self.status, Unset):
+            status = self.status.value
 
         updated_at: Union[Unset, str] = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
+        user_message = self.user_message
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if status is not UNSET:
-            field_dict["status"] = status
-        if user_message is not UNSET:
-            field_dict["user_message"] = user_message
-        if spec is not UNSET:
-            field_dict["spec"] = spec
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
+        if spec is not UNSET:
+            field_dict["spec"] = spec
+        if status is not UNSET:
+            field_dict["status"] = status
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
+        if user_message is not UNSET:
+            field_dict["user_message"] = user_message
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        _status = d.pop("status", UNSET)
-        status: Union[Unset, CMEKStatus]
-        if _status is None:
-            status = None
-        elif isinstance(_status, Unset):
-            status = UNSET
+        _created_at = d.pop("created_at", UNSET)
+        created_at: Union[Unset, datetime.datetime]
+        if _created_at is None:
+            created_at = None
+        elif isinstance(_created_at, Unset):
+            created_at = UNSET
         else:
-            status = CMEKStatus(_status)
-
-        user_message = d.pop("user_message", UNSET)
+            created_at = isoparse(_created_at)
 
         _spec = d.pop("spec", UNSET)
         spec: Union[Unset, CMEKKeySpecification]
@@ -118,14 +117,14 @@ class CMEKKeyInfo:
         else:
             spec = CMEKKeySpecification.from_dict(_spec)
 
-        _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
-        if _created_at is None:
-            created_at = None
-        elif isinstance(_created_at, Unset):
-            created_at = UNSET
+        _status = d.pop("status", UNSET)
+        status: Union[Unset, CMEKStatus]
+        if _status is None:
+            status = None
+        elif isinstance(_status, Unset):
+            status = UNSET
         else:
-            created_at = isoparse(_created_at)
+            status = CMEKStatus(_status)
 
         _updated_at = d.pop("updated_at", UNSET)
         updated_at: Union[Unset, datetime.datetime]
@@ -136,12 +135,14 @@ class CMEKKeyInfo:
         else:
             updated_at = isoparse(_updated_at)
 
+        user_message = d.pop("user_message", UNSET)
+
         cmek_key_info = cls(
-            status=status,
-            user_message=user_message,
-            spec=spec,
             created_at=created_at,
+            spec=spec,
+            status=status,
             updated_at=updated_at,
+            user_message=user_message,
         )
 
         cmek_key_info.additional_properties = d

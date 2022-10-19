@@ -76,9 +76,9 @@ def sync_detailed(
     Args:
         cluster_id (str):
         json_body (CockroachCloudUpdateCMEKSpecCMEKClusterSpecification):  Example:
-            {'region_specs': [{'region': 'us-central1', 'key_spec': {'type': 'AWS_KMS', 'uri':
-            'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-key', 'auth_principal':
-            'arn:aws:iam::account:role/role-name-with-path'}}]}.
+            {'region_specs': [{'key_spec': {'auth_principal': 'arn:aws:iam::account:role/role-name-
+            with-path', 'type': 'AWS_KMS', 'uri': 'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-
+            key'}, 'region': 'us-central1'}]}.
 
     Returns:
         Response[Union[Any, CMEKClusterInfo]]
@@ -109,9 +109,9 @@ def sync(
     Args:
         cluster_id (str):
         json_body (CockroachCloudUpdateCMEKSpecCMEKClusterSpecification):  Example:
-            {'region_specs': [{'region': 'us-central1', 'key_spec': {'type': 'AWS_KMS', 'uri':
-            'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-key', 'auth_principal':
-            'arn:aws:iam::account:role/role-name-with-path'}}]}.
+            {'region_specs': [{'key_spec': {'auth_principal': 'arn:aws:iam::account:role/role-name-
+            with-path', 'type': 'AWS_KMS', 'uri': 'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-
+            key'}, 'region': 'us-central1'}]}.
 
     Returns:
         Response[Union[Any, CMEKClusterInfo]]
@@ -135,9 +135,9 @@ async def asyncio_detailed(
     Args:
         cluster_id (str):
         json_body (CockroachCloudUpdateCMEKSpecCMEKClusterSpecification):  Example:
-            {'region_specs': [{'region': 'us-central1', 'key_spec': {'type': 'AWS_KMS', 'uri':
-            'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-key', 'auth_principal':
-            'arn:aws:iam::account:role/role-name-with-path'}}]}.
+            {'region_specs': [{'key_spec': {'auth_principal': 'arn:aws:iam::account:role/role-name-
+            with-path', 'type': 'AWS_KMS', 'uri': 'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-
+            key'}, 'region': 'us-central1'}]}.
 
     Returns:
         Response[Union[Any, CMEKClusterInfo]]
@@ -166,9 +166,9 @@ async def asyncio(
     Args:
         cluster_id (str):
         json_body (CockroachCloudUpdateCMEKSpecCMEKClusterSpecification):  Example:
-            {'region_specs': [{'region': 'us-central1', 'key_spec': {'type': 'AWS_KMS', 'uri':
-            'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-key', 'auth_principal':
-            'arn:aws:iam::account:role/role-name-with-path'}}]}.
+            {'region_specs': [{'key_spec': {'auth_principal': 'arn:aws:iam::account:role/role-name-
+            with-path', 'type': 'AWS_KMS', 'uri': 'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-
+            key'}, 'region': 'us-central1'}]}.
 
     Returns:
         Response[Union[Any, CMEKClusterInfo]]

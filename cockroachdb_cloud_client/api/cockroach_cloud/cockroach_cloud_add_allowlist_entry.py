@@ -72,8 +72,8 @@ def sync_detailed(
 
     Args:
         cluster_id (str):
-        json_body (AllowlistEntry):  Example: {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'ui':
-            True, 'sql': True, 'name': 'Example'}.
+        json_body (AllowlistEntry):  Example: {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'name':
+            'Example', 'sql': True, 'ui': True}.
 
     Returns:
         Response[Union[AllowlistEntry, Any]]
@@ -103,8 +103,8 @@ def sync(
 
     Args:
         cluster_id (str):
-        json_body (AllowlistEntry):  Example: {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'ui':
-            True, 'sql': True, 'name': 'Example'}.
+        json_body (AllowlistEntry):  Example: {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'name':
+            'Example', 'sql': True, 'ui': True}.
 
     Returns:
         Response[Union[AllowlistEntry, Any]]
@@ -127,8 +127,8 @@ async def asyncio_detailed(
 
     Args:
         cluster_id (str):
-        json_body (AllowlistEntry):  Example: {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'ui':
-            True, 'sql': True, 'name': 'Example'}.
+        json_body (AllowlistEntry):  Example: {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'name':
+            'Example', 'sql': True, 'ui': True}.
 
     Returns:
         Response[Union[AllowlistEntry, Any]]
@@ -156,8 +156,8 @@ async def asyncio(
 
     Args:
         cluster_id (str):
-        json_body (AllowlistEntry):  Example: {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'ui':
-            True, 'sql': True, 'name': 'Example'}.
+        json_body (AllowlistEntry):  Example: {'cidr_ip': '192.168.1.1', 'cidr_mask': 32, 'name':
+            'Example', 'sql': True, 'ui': True}.
 
     Returns:
         Response[Union[AllowlistEntry, Any]]

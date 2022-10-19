@@ -14,25 +14,25 @@ T = TypeVar("T", bound="KeysetPaginationRequest")
 class KeysetPaginationRequest:
     """
     Attributes:
-        page (Union[Unset, str]):
-        limit (Union[Unset, int]):
         as_of_time (Union[Unset, datetime.datetime]):
+        limit (Union[Unset, int]):
+        page (Union[Unset, str]):
         sort_order (Union[Unset, SortOrder]):  - DESC: Sort in descending order. The default order is ascending.
     """
 
-    page: Union[Unset, str] = UNSET
-    limit: Union[Unset, int] = UNSET
     as_of_time: Union[Unset, datetime.datetime] = UNSET
+    limit: Union[Unset, int] = UNSET
+    page: Union[Unset, str] = UNSET
     sort_order: Union[Unset, SortOrder] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        page = self.page
-        limit = self.limit
         as_of_time: Union[Unset, str] = UNSET
         if not isinstance(self.as_of_time, Unset):
             as_of_time = self.as_of_time.isoformat()
 
+        limit = self.limit
+        page = self.page
         sort_order: Union[Unset, str] = UNSET
         if not isinstance(self.sort_order, Unset):
             sort_order = self.sort_order.value
@@ -40,12 +40,12 @@ class KeysetPaginationRequest:
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if page is not UNSET:
-            field_dict["page"] = page
-        if limit is not UNSET:
-            field_dict["limit"] = limit
         if as_of_time is not UNSET:
             field_dict["as_of_time"] = as_of_time
+        if limit is not UNSET:
+            field_dict["limit"] = limit
+        if page is not UNSET:
+            field_dict["page"] = page
         if sort_order is not UNSET:
             field_dict["sort_order"] = sort_order
 
@@ -54,10 +54,6 @@ class KeysetPaginationRequest:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        page = d.pop("page", UNSET)
-
-        limit = d.pop("limit", UNSET)
-
         _as_of_time = d.pop("as_of_time", UNSET)
         as_of_time: Union[Unset, datetime.datetime]
         if _as_of_time is None:
@@ -66,6 +62,10 @@ class KeysetPaginationRequest:
             as_of_time = UNSET
         else:
             as_of_time = isoparse(_as_of_time)
+
+        limit = d.pop("limit", UNSET)
+
+        page = d.pop("page", UNSET)
 
         _sort_order = d.pop("sort_order", UNSET)
         sort_order: Union[Unset, SortOrder]
@@ -77,9 +77,9 @@ class KeysetPaginationRequest:
             sort_order = SortOrder(_sort_order)
 
         keyset_pagination_request = cls(
-            page=page,
-            limit=limit,
             as_of_time=as_of_time,
+            limit=limit,
+            page=page,
             sort_order=sort_order,
         )
 

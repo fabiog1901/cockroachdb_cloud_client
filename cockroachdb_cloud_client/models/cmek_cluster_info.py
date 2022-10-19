@@ -15,6 +15,7 @@ class CMEKClusterInfo:
     including within each one its regions.
 
         Attributes:
+            region_infos (Union[Unset, List[CMEKRegionInfo]]):
             status (Union[Unset, CMEKStatus]): CMEKStatus describes the current status of CMEK for an entire CRDB cluster
                 or a CMEK key within a region.
 
@@ -43,18 +44,13 @@ class CMEKClusterInfo:
                 CMEK is in the process of being revoked.
                  - REVOKE_FAILED: REVOKE_FAILED corresponds to the state of a cluster or region-level key
                 when CMEK has failed to be revoked.
-            region_infos (Union[Unset, List[CMEKRegionInfo]]):
     """
 
-    status: Union[Unset, CMEKStatus] = UNSET
     region_infos: Union[Unset, List[CMEKRegionInfo]] = UNSET
+    status: Union[Unset, CMEKStatus] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        status: Union[Unset, str] = UNSET
-        if not isinstance(self.status, Unset):
-            status = self.status.value
-
         region_infos: Union[Unset, List[Dict[str, Any]]] = UNSET
         if not isinstance(self.region_infos, Unset):
             region_infos = []
@@ -63,19 +59,30 @@ class CMEKClusterInfo:
 
                 region_infos.append(region_infos_item)
 
+        status: Union[Unset, str] = UNSET
+        if not isinstance(self.status, Unset):
+            status = self.status.value
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if status is not UNSET:
-            field_dict["status"] = status
         if region_infos is not UNSET:
             field_dict["region_infos"] = region_infos
+        if status is not UNSET:
+            field_dict["status"] = status
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
+        region_infos = []
+        _region_infos = d.pop("region_infos", UNSET)
+        for region_infos_item_data in _region_infos or []:
+            region_infos_item = CMEKRegionInfo.from_dict(region_infos_item_data)
+
+            region_infos.append(region_infos_item)
+
         _status = d.pop("status", UNSET)
         status: Union[Unset, CMEKStatus]
         if _status is None:
@@ -85,16 +92,9 @@ class CMEKClusterInfo:
         else:
             status = CMEKStatus(_status)
 
-        region_infos = []
-        _region_infos = d.pop("region_infos", UNSET)
-        for region_infos_item_data in _region_infos or []:
-            region_infos_item = CMEKRegionInfo.from_dict(region_infos_item_data)
-
-            region_infos.append(region_infos_item)
-
         cmek_cluster_info = cls(
-            status=status,
             region_infos=region_infos,
+            status=status,
         )
 
         cmek_cluster_info.additional_properties = d

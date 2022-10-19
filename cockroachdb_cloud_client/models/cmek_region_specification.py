@@ -14,38 +14,37 @@ class CMEKRegionSpecification:
     should be used in a given region.
 
         Attributes:
-            region (Union[Unset, str]):
             key_spec (Union[Unset, CMEKKeySpecification]): CMEKKeySpecification contains all the details necessary to use a
                 customer-provided
                 encryption key. This involves the type/location of the key and the principal
                 to authenticate as when accessing it.
+            region (Union[Unset, str]):
     """
 
-    region: Union[Unset, str] = UNSET
     key_spec: Union[Unset, CMEKKeySpecification] = UNSET
+    region: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        region = self.region
         key_spec: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.key_spec, Unset):
             key_spec = self.key_spec.to_dict()
 
+        region = self.region
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if region is not UNSET:
-            field_dict["region"] = region
         if key_spec is not UNSET:
             field_dict["key_spec"] = key_spec
+        if region is not UNSET:
+            field_dict["region"] = region
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        region = d.pop("region", UNSET)
-
         _key_spec = d.pop("key_spec", UNSET)
         key_spec: Union[Unset, CMEKKeySpecification]
         if _key_spec is None:
@@ -55,9 +54,11 @@ class CMEKRegionSpecification:
         else:
             key_spec = CMEKKeySpecification.from_dict(_key_spec)
 
+        region = d.pop("region", UNSET)
+
         cmek_region_specification = cls(
-            region=region,
             key_spec=key_spec,
+            region=region,
         )
 
         cmek_region_specification.additional_properties = d

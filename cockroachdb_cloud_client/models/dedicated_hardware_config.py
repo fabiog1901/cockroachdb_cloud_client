@@ -9,39 +9,39 @@ T = TypeVar("T", bound="DedicatedHardwareConfig")
 class DedicatedHardwareConfig:
     """
     Attributes:
-        machine_type (str): MachineType is the machine type identifier within the given cloud
-            provider, ex. m5.xlarge, n2-standard-4.
-        num_virtual_cpus (int): NumVirtualCPUs is the number of virtual CPUs per node in the cluster.
-        storage_gib (int): StorageGiB is the number of storage GiB per node in the cluster.
-        memory_gib (float): MemoryGiB is the memory GiB per node in the cluster.
         disk_iops (int): DiskIOPs is the number of disk I/O operations per second that are
             permitted on each node in the cluster. Zero indicates the cloud
             provider-specific default.
+        machine_type (str): MachineType is the machine type identifier within the given cloud
+            provider, ex. m5.xlarge, n2-standard-4.
+        memory_gib (float): MemoryGiB is the memory GiB per node in the cluster.
+        num_virtual_cpus (int): NumVirtualCPUs is the number of virtual CPUs per node in the cluster.
+        storage_gib (int): StorageGiB is the number of storage GiB per node in the cluster.
     """
 
+    disk_iops: int
     machine_type: str
+    memory_gib: float
     num_virtual_cpus: int
     storage_gib: int
-    memory_gib: float
-    disk_iops: int
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        disk_iops = self.disk_iops
         machine_type = self.machine_type
+        memory_gib = self.memory_gib
         num_virtual_cpus = self.num_virtual_cpus
         storage_gib = self.storage_gib
-        memory_gib = self.memory_gib
-        disk_iops = self.disk_iops
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "disk_iops": disk_iops,
                 "machine_type": machine_type,
+                "memory_gib": memory_gib,
                 "num_virtual_cpus": num_virtual_cpus,
                 "storage_gib": storage_gib,
-                "memory_gib": memory_gib,
-                "disk_iops": disk_iops,
             }
         )
 
@@ -50,22 +50,22 @@ class DedicatedHardwareConfig:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
+        disk_iops = d.pop("disk_iops")
+
         machine_type = d.pop("machine_type")
+
+        memory_gib = d.pop("memory_gib")
 
         num_virtual_cpus = d.pop("num_virtual_cpus")
 
         storage_gib = d.pop("storage_gib")
 
-        memory_gib = d.pop("memory_gib")
-
-        disk_iops = d.pop("disk_iops")
-
         dedicated_hardware_config = cls(
+            disk_iops=disk_iops,
             machine_type=machine_type,
+            memory_gib=memory_gib,
             num_virtual_cpus=num_virtual_cpus,
             storage_gib=storage_gib,
-            memory_gib=memory_gib,
-            disk_iops=disk_iops,
         )
 
         dedicated_hardware_config.additional_properties = d

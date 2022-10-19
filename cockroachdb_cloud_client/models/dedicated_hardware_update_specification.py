@@ -12,41 +12,43 @@ T = TypeVar("T", bound="DedicatedHardwareUpdateSpecification")
 class DedicatedHardwareUpdateSpecification:
     """
     Attributes:
-        machine_spec (Union[Unset, DedicatedMachineTypeSpecification]):
-        storage_gib (Union[Unset, int]): StorageGiB is the number of storage GiB per node in the cluster.
         disk_iops (Union[Unset, int]): DiskIOPs is the number of disk I/O operations per second that are
             permitted on each node in the cluster. Zero indicates the cloud
             provider-specific default. Only available for AWS clusters.
+        machine_spec (Union[Unset, DedicatedMachineTypeSpecification]):
+        storage_gib (Union[Unset, int]): StorageGiB is the number of storage GiB per node in the cluster.
     """
 
+    disk_iops: Union[Unset, int] = UNSET
     machine_spec: Union[Unset, DedicatedMachineTypeSpecification] = UNSET
     storage_gib: Union[Unset, int] = UNSET
-    disk_iops: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        disk_iops = self.disk_iops
         machine_spec: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.machine_spec, Unset):
             machine_spec = self.machine_spec.to_dict()
 
         storage_gib = self.storage_gib
-        disk_iops = self.disk_iops
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if disk_iops is not UNSET:
+            field_dict["disk_iops"] = disk_iops
         if machine_spec is not UNSET:
             field_dict["machine_spec"] = machine_spec
         if storage_gib is not UNSET:
             field_dict["storage_gib"] = storage_gib
-        if disk_iops is not UNSET:
-            field_dict["disk_iops"] = disk_iops
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
+        disk_iops = d.pop("disk_iops", UNSET)
+
         _machine_spec = d.pop("machine_spec", UNSET)
         machine_spec: Union[Unset, DedicatedMachineTypeSpecification]
         if _machine_spec is None:
@@ -58,12 +60,10 @@ class DedicatedHardwareUpdateSpecification:
 
         storage_gib = d.pop("storage_gib", UNSET)
 
-        disk_iops = d.pop("disk_iops", UNSET)
-
         dedicated_hardware_update_specification = cls(
+            disk_iops=disk_iops,
             machine_spec=machine_spec,
             storage_gib=storage_gib,
-            disk_iops=disk_iops,
         )
 
         dedicated_hardware_update_specification.additional_properties = d

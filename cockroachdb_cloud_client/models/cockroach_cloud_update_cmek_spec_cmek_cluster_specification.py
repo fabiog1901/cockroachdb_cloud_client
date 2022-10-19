@@ -11,8 +11,8 @@ T = TypeVar("T", bound="CockroachCloudUpdateCMEKSpecCMEKClusterSpecification")
 class CockroachCloudUpdateCMEKSpecCMEKClusterSpecification:
     """
     Example:
-        {'region_specs': [{'region': 'us-central1', 'key_spec': {'type': 'AWS_KMS', 'uri': 'arn:aws:kms:us-
-            west-2:111122223333:key/id-of-kms-key', 'auth_principal': 'arn:aws:iam::account:role/role-name-with-path'}}]}
+        {'region_specs': [{'key_spec': {'auth_principal': 'arn:aws:iam::account:role/role-name-with-path', 'type':
+            'AWS_KMS', 'uri': 'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-key'}, 'region': 'us-central1'}]}
 
     Attributes:
         region_specs (List[CMEKRegionSpecification]):

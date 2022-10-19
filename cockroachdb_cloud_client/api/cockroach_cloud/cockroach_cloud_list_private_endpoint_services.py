@@ -66,6 +66,8 @@ def sync_detailed(
     client: Client,
 ) -> Response[Union[Any, PrivateEndpointServices]]:
     """Lists all PrivateEndpointServices for a given cluster.
+    The internal_dns property from the regions field in the ListClusters response can be used to connect
+    to PrivateEndpointServices.
 
     Args:
         cluster_id (str):
@@ -93,6 +95,8 @@ def sync(
     client: Client,
 ) -> Optional[Union[Any, PrivateEndpointServices]]:
     """Lists all PrivateEndpointServices for a given cluster.
+    The internal_dns property from the regions field in the ListClusters response can be used to connect
+    to PrivateEndpointServices.
 
     Args:
         cluster_id (str):
@@ -113,6 +117,8 @@ async def asyncio_detailed(
     client: Client,
 ) -> Response[Union[Any, PrivateEndpointServices]]:
     """Lists all PrivateEndpointServices for a given cluster.
+    The internal_dns property from the regions field in the ListClusters response can be used to connect
+    to PrivateEndpointServices.
 
     Args:
         cluster_id (str):
@@ -138,6 +144,8 @@ async def asyncio(
     client: Client,
 ) -> Optional[Union[Any, PrivateEndpointServices]]:
     """Lists all PrivateEndpointServices for a given cluster.
+    The internal_dns property from the regions field in the ListClusters response can be used to connect
+    to PrivateEndpointServices.
 
     Args:
         cluster_id (str):

@@ -71,7 +71,8 @@ def sync_detailed(
     client: Client,
     json_body: CockroachCloudEnableLogExportEnableLogExportRequest,
 ) -> Response[Union[Any, LogExportClusterInfo]]:
-    """
+    """Create a Log Export configuration for a cluster
+
     Args:
         cluster_id (str):
         json_body (CockroachCloudEnableLogExportEnableLogExportRequest):
@@ -100,7 +101,8 @@ def sync(
     client: Client,
     json_body: CockroachCloudEnableLogExportEnableLogExportRequest,
 ) -> Optional[Union[Any, LogExportClusterInfo]]:
-    """
+    """Create a Log Export configuration for a cluster
+
     Args:
         cluster_id (str):
         json_body (CockroachCloudEnableLogExportEnableLogExportRequest):
@@ -122,7 +124,8 @@ async def asyncio_detailed(
     client: Client,
     json_body: CockroachCloudEnableLogExportEnableLogExportRequest,
 ) -> Response[Union[Any, LogExportClusterInfo]]:
-    """
+    """Create a Log Export configuration for a cluster
+
     Args:
         cluster_id (str):
         json_body (CockroachCloudEnableLogExportEnableLogExportRequest):
@@ -149,7 +152,8 @@ async def asyncio(
     client: Client,
     json_body: CockroachCloudEnableLogExportEnableLogExportRequest,
 ) -> Optional[Union[Any, LogExportClusterInfo]]:
-    """
+    """Create a Log Export configuration for a cluster
+
     Args:
         cluster_id (str):
         json_body (CockroachCloudEnableLogExportEnableLogExportRequest):

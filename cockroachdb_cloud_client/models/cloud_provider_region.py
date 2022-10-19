@@ -11,38 +11,38 @@ T = TypeVar("T", bound="CloudProviderRegion")
 class CloudProviderRegion:
     """
     Attributes:
-        name (str):
+        distance (float):
         location (str):
+        name (str):
         provider (ApiCloudProvider):  - GCP: The Google Cloud Platform cloud provider.
              - AWS: The Amazon Web Services cloud provider.
         serverless (bool):
-        distance (float):
     """
 
-    name: str
+    distance: float
     location: str
+    name: str
     provider: ApiCloudProvider
     serverless: bool
-    distance: float
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        name = self.name
+        distance = self.distance
         location = self.location
+        name = self.name
         provider = self.provider.value
 
         serverless = self.serverless
-        distance = self.distance
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "name": name,
+                "distance": distance,
                 "location": location,
+                "name": name,
                 "provider": provider,
                 "serverless": serverless,
-                "distance": distance,
             }
         )
 
@@ -51,22 +51,22 @@ class CloudProviderRegion:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        name = d.pop("name")
+        distance = d.pop("distance")
 
         location = d.pop("location")
+
+        name = d.pop("name")
 
         provider = ApiCloudProvider(d.pop("provider"))
 
         serverless = d.pop("serverless")
 
-        distance = d.pop("distance")
-
         cloud_provider_region = cls(
-            name=name,
+            distance=distance,
             location=location,
+            name=name,
             provider=provider,
             serverless=serverless,
-            distance=distance,
         )
 
         cloud_provider_region.additional_properties = d

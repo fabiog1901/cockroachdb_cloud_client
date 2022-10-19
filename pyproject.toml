@@ -1,11 +1,16 @@
 [tool.poetry]
 name = "cockroachdb_cloud_client"
-version = "0.0.2"
+version = "0.0.3"
 description = "A client library for accessing CockroachDB Cloud API"
 
 authors = ['Cockroach Labs']
+homepage = "https://www.cockroachlabs.com/docs/api/cloud/v1.html#get-/api/v1/clusters"
+repository = "https://github.com/fabiog1901/cockroachdb_cloud_client"
 
 readme = "README.md"
+
+documentation = "https://www.cockroachlabs.com/docs/  "
+
 packages = [
     {include = "cockroachdb_cloud_client"},
 ]

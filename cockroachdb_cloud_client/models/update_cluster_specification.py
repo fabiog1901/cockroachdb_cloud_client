@@ -13,8 +13,8 @@ T = TypeVar("T", bound="UpdateClusterSpecification")
 class UpdateClusterSpecification:
     """
     Example:
-        {'dedicated': {'region_nodes': {'us-west1': 3, 'us-central1': 5}, 'hardware': {'machine_type':
-            'n2-standard-8'}}}
+        {'dedicated': {'hardware': {'machine_type': 'n2-standard-8'}, 'region_nodes': {'us-central1': 5, 'us-west1':
+            3}}}
 
     Attributes:
         dedicated (Union[Unset, DedicatedClusterUpdateSpecification]):

@@ -63,7 +63,8 @@ def sync_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, LogExportClusterInfo]]:
-    """
+    """Delete the Log Export configuration for a cluster
+
     Args:
         cluster_id (str):
 
@@ -89,7 +90,8 @@ def sync(
     *,
     client: Client,
 ) -> Optional[Union[Any, LogExportClusterInfo]]:
-    """
+    """Delete the Log Export configuration for a cluster
+
     Args:
         cluster_id (str):
 
@@ -108,7 +110,8 @@ async def asyncio_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, LogExportClusterInfo]]:
-    """
+    """Delete the Log Export configuration for a cluster
+
     Args:
         cluster_id (str):
 
@@ -132,7 +135,8 @@ async def asyncio(
     *,
     client: Client,
 ) -> Optional[Union[Any, LogExportClusterInfo]]:
-    """
+    """Delete the Log Export configuration for a cluster
+
     Args:
         cluster_id (str):
 

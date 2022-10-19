@@ -9,24 +9,24 @@ T = TypeVar("T", bound="ServerlessClusterConfig")
 class ServerlessClusterConfig:
     """
     Attributes:
-        spend_limit (int): Spend limit in US cents.
         routing_id (str): Used to build a connection string.
+        spend_limit (int): Spend limit in US cents.
     """
 
-    spend_limit: int
     routing_id: str
+    spend_limit: int
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        spend_limit = self.spend_limit
         routing_id = self.routing_id
+        spend_limit = self.spend_limit
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "spend_limit": spend_limit,
                 "routing_id": routing_id,
+                "spend_limit": spend_limit,
             }
         )
 
@@ -35,13 +35,13 @@ class ServerlessClusterConfig:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        spend_limit = d.pop("spend_limit")
-
         routing_id = d.pop("routing_id")
 
+        spend_limit = d.pop("spend_limit")
+
         serverless_cluster_config = cls(
-            spend_limit=spend_limit,
             routing_id=routing_id,
+            spend_limit=spend_limit,
         )
 
         serverless_cluster_config.additional_properties = d

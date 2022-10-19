@@ -15,41 +15,43 @@ class CMEKKeySpecification:
     to authenticate as when accessing it.
 
         Attributes:
+            auth_principal (Union[Unset, str]):
             type (Union[Unset, CMEKKeyType]): CMEKKeyType enumerates types of customer-managed keys.
 
                  - UNKNOWN_KEY_TYPE: UNKNOWN should never be used; if it is used, it indicates a bug.
             uri (Union[Unset, str]):
-            auth_principal (Union[Unset, str]):
     """
 
+    auth_principal: Union[Unset, str] = UNSET
     type: Union[Unset, CMEKKeyType] = UNSET
     uri: Union[Unset, str] = UNSET
-    auth_principal: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        auth_principal = self.auth_principal
         type: Union[Unset, str] = UNSET
         if not isinstance(self.type, Unset):
             type = self.type.value
 
         uri = self.uri
-        auth_principal = self.auth_principal
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if auth_principal is not UNSET:
+            field_dict["auth_principal"] = auth_principal
         if type is not UNSET:
             field_dict["type"] = type
         if uri is not UNSET:
             field_dict["uri"] = uri
-        if auth_principal is not UNSET:
-            field_dict["auth_principal"] = auth_principal
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
+        auth_principal = d.pop("auth_principal", UNSET)
+
         _type = d.pop("type", UNSET)
         type: Union[Unset, CMEKKeyType]
         if _type is None:
@@ -61,12 +63,10 @@ class CMEKKeySpecification:
 
         uri = d.pop("uri", UNSET)
 
-        auth_principal = d.pop("auth_principal", UNSET)
-
         cmek_key_specification = cls(
+            auth_principal=auth_principal,
             type=type,
             uri=uri,
-            auth_principal=auth_principal,
         )
 
         cmek_key_specification.additional_properties = d

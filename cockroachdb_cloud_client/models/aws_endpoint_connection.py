@@ -12,40 +12,39 @@ T = TypeVar("T", bound="AwsEndpointConnection")
 class AwsEndpointConnection:
     """
     Attributes:
-        region_name (str): RegionName is the cloud provider region name (i.e. us-east-1).
         cloud_provider (ApiCloudProvider):  - GCP: The Google Cloud Platform cloud provider.
              - AWS: The Amazon Web Services cloud provider.
-        status (AWSEndpointConnectionStatus): The statuses map to the statuses returned by the AWS API.
         endpoint_id (str): EndpointID is the client side of the PrivateLink connection.
+        region_name (str): RegionName is the cloud provider region name (i.e. us-east-1).
         service_id (str): ServiceID is the server side of the PrivateLink
             connection. This is the same as AWSPrivateLinkEndpoint.service_id.
+        status (AWSEndpointConnectionStatus): The statuses map to the statuses returned by the AWS API.
     """
 
-    region_name: str
     cloud_provider: ApiCloudProvider
-    status: AWSEndpointConnectionStatus
     endpoint_id: str
+    region_name: str
     service_id: str
+    status: AWSEndpointConnectionStatus
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        region_name = self.region_name
         cloud_provider = self.cloud_provider.value
 
-        status = self.status.value
-
         endpoint_id = self.endpoint_id
+        region_name = self.region_name
         service_id = self.service_id
+        status = self.status.value
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "region_name": region_name,
                 "cloud_provider": cloud_provider,
-                "status": status,
                 "endpoint_id": endpoint_id,
+                "region_name": region_name,
                 "service_id": service_id,
+                "status": status,
             }
         )
 
@@ -54,22 +53,22 @@ class AwsEndpointConnection:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        region_name = d.pop("region_name")
-
         cloud_provider = ApiCloudProvider(d.pop("cloud_provider"))
-
-        status = AWSEndpointConnectionStatus(d.pop("status"))
 
         endpoint_id = d.pop("endpoint_id")
 
+        region_name = d.pop("region_name")
+
         service_id = d.pop("service_id")
 
+        status = AWSEndpointConnectionStatus(d.pop("status"))
+
         aws_endpoint_connection = cls(
-            region_name=region_name,
             cloud_provider=cloud_provider,
-            status=status,
             endpoint_id=endpoint_id,
+            region_name=region_name,
             service_id=service_id,
+            status=status,
         )
 
         aws_endpoint_connection.additional_properties = d

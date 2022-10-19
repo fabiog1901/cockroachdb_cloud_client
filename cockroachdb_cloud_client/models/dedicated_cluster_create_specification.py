@@ -13,24 +13,24 @@ T = TypeVar("T", bound="DedicatedClusterCreateSpecification")
 class DedicatedClusterCreateSpecification:
     """
     Attributes:
+        hardware (DedicatedHardwareCreateSpecification):
         region_nodes (DedicatedClusterCreateSpecificationRegionNodes): Region keys should match the cloud provider's
             zone code.
             For example, for Oregon, set region_name to "us-west2" for
             GCP and "us-west-2" for AWS. Values represent the node count.
-        hardware (DedicatedHardwareCreateSpecification):
         cockroach_version (Union[Unset, str]): The CockroachDB version for the cluster. The current version
             is used if omitted.
     """
 
-    region_nodes: DedicatedClusterCreateSpecificationRegionNodes
     hardware: DedicatedHardwareCreateSpecification
+    region_nodes: DedicatedClusterCreateSpecificationRegionNodes
     cockroach_version: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        region_nodes = self.region_nodes.to_dict()
-
         hardware = self.hardware.to_dict()
+
+        region_nodes = self.region_nodes.to_dict()
 
         cockroach_version = self.cockroach_version
 
@@ -38,8 +38,8 @@ class DedicatedClusterCreateSpecification:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "region_nodes": region_nodes,
                 "hardware": hardware,
+                "region_nodes": region_nodes,
             }
         )
         if cockroach_version is not UNSET:
@@ -50,15 +50,15 @@ class DedicatedClusterCreateSpecification:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        region_nodes = DedicatedClusterCreateSpecificationRegionNodes.from_dict(d.pop("region_nodes"))
-
         hardware = DedicatedHardwareCreateSpecification.from_dict(d.pop("hardware"))
+
+        region_nodes = DedicatedClusterCreateSpecificationRegionNodes.from_dict(d.pop("region_nodes"))
 
         cockroach_version = d.pop("cockroach_version", UNSET)
 
         dedicated_cluster_create_specification = cls(
-            region_nodes=region_nodes,
             hardware=hardware,
+            region_nodes=region_nodes,
             cockroach_version=cockroach_version,
         )
 

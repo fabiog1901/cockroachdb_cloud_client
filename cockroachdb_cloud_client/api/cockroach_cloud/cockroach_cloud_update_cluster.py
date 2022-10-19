@@ -82,8 +82,8 @@ def sync_detailed(
     Args:
         cluster_id (str):
         field_mask (Union[Unset, None, str]):
-        json_body (UpdateClusterSpecification):  Example: {'dedicated': {'region_nodes': {'us-
-            west1': 3, 'us-central1': 5}, 'hardware': {'machine_type': 'n2-standard-8'}}}.
+        json_body (UpdateClusterSpecification):  Example: {'dedicated': {'hardware':
+            {'machine_type': 'n2-standard-8'}, 'region_nodes': {'us-central1': 5, 'us-west1': 3}}}.
 
     Returns:
         Response[Union[Any, Cluster]]
@@ -116,8 +116,8 @@ def sync(
     Args:
         cluster_id (str):
         field_mask (Union[Unset, None, str]):
-        json_body (UpdateClusterSpecification):  Example: {'dedicated': {'region_nodes': {'us-
-            west1': 3, 'us-central1': 5}, 'hardware': {'machine_type': 'n2-standard-8'}}}.
+        json_body (UpdateClusterSpecification):  Example: {'dedicated': {'hardware':
+            {'machine_type': 'n2-standard-8'}, 'region_nodes': {'us-central1': 5, 'us-west1': 3}}}.
 
     Returns:
         Response[Union[Any, Cluster]]
@@ -143,8 +143,8 @@ async def asyncio_detailed(
     Args:
         cluster_id (str):
         field_mask (Union[Unset, None, str]):
-        json_body (UpdateClusterSpecification):  Example: {'dedicated': {'region_nodes': {'us-
-            west1': 3, 'us-central1': 5}, 'hardware': {'machine_type': 'n2-standard-8'}}}.
+        json_body (UpdateClusterSpecification):  Example: {'dedicated': {'hardware':
+            {'machine_type': 'n2-standard-8'}, 'region_nodes': {'us-central1': 5, 'us-west1': 3}}}.
 
     Returns:
         Response[Union[Any, Cluster]]
@@ -175,8 +175,8 @@ async def asyncio(
     Args:
         cluster_id (str):
         field_mask (Union[Unset, None, str]):
-        json_body (UpdateClusterSpecification):  Example: {'dedicated': {'region_nodes': {'us-
-            west1': 3, 'us-central1': 5}, 'hardware': {'machine_type': 'n2-standard-8'}}}.
+        json_body (UpdateClusterSpecification):  Example: {'dedicated': {'hardware':
+            {'machine_type': 'n2-standard-8'}, 'region_nodes': {'us-central1': 5, 'us-west1': 3}}}.
 
     Returns:
         Response[Union[Any, Cluster]]

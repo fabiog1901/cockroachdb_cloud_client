@@ -14,26 +14,27 @@ class LineItem:
     Attributes:
         description (str): Description contains the details of the line item (i.e t3 micro).
         quantity (float): Quantity is the number of the specific line items used.
-        unit_cost (float): UnitCost is the cost per unit of line item.
-        total (CurrencyAmount):
         quantity_unit (QuantityUnitType): Billing
             QuantityUnitType is the unit type for a quantity of billing line item.
+        total (CurrencyAmount):
+        unit_cost (float): UnitCost is the cost per unit of line item.
     """
 
     description: str
     quantity: float
-    unit_cost: float
-    total: CurrencyAmount
     quantity_unit: QuantityUnitType
+    total: CurrencyAmount
+    unit_cost: float
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
         quantity = self.quantity
-        unit_cost = self.unit_cost
+        quantity_unit = self.quantity_unit.value
+
         total = self.total.to_dict()
 
-        quantity_unit = self.quantity_unit.value
+        unit_cost = self.unit_cost
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -41,9 +42,9 @@ class LineItem:
             {
                 "description": description,
                 "quantity": quantity,
-                "unit_cost": unit_cost,
-                "total": total,
                 "quantity_unit": quantity_unit,
+                "total": total,
+                "unit_cost": unit_cost,
             }
         )
 
@@ -56,18 +57,18 @@ class LineItem:
 
         quantity = d.pop("quantity")
 
-        unit_cost = d.pop("unit_cost")
+        quantity_unit = QuantityUnitType(d.pop("quantity_unit"))
 
         total = CurrencyAmount.from_dict(d.pop("total"))
 
-        quantity_unit = QuantityUnitType(d.pop("quantity_unit"))
+        unit_cost = d.pop("unit_cost")
 
         line_item = cls(
             description=description,
             quantity=quantity,
-            unit_cost=unit_cost,
-            total=total,
             quantity_unit=quantity_unit,
+            total=total,
+            unit_cost=unit_cost,
         )
 
         line_item.additional_properties = d
