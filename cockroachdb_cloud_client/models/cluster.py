@@ -47,6 +47,7 @@ class Cluster:
         account_id (Union[Unset, str]):
         created_at (Union[Unset, datetime.datetime]):
         deleted_at (Union[Unset, datetime.datetime]):
+        sql_dns (Union[Unset, str]): sql_dns is the DNS name of SQL interface of the cluster.
         updated_at (Union[Unset, datetime.datetime]):
     """
 
@@ -63,6 +64,7 @@ class Cluster:
     account_id: Union[Unset, str] = UNSET
     created_at: Union[Unset, datetime.datetime] = UNSET
     deleted_at: Union[Unset, datetime.datetime] = UNSET
+    sql_dns: Union[Unset, str] = UNSET
     updated_at: Union[Unset, datetime.datetime] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -96,6 +98,7 @@ class Cluster:
         if not isinstance(self.deleted_at, Unset):
             deleted_at = self.deleted_at.isoformat()
 
+        sql_dns = self.sql_dns
         updated_at: Union[Unset, str] = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
@@ -122,6 +125,8 @@ class Cluster:
             field_dict["created_at"] = created_at
         if deleted_at is not UNSET:
             field_dict["deleted_at"] = deleted_at
+        if sql_dns is not UNSET:
+            field_dict["sql_dns"] = sql_dns
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -175,6 +180,8 @@ class Cluster:
         else:
             deleted_at = isoparse(_deleted_at)
 
+        sql_dns = d.pop("sql_dns", UNSET)
+
         _updated_at = d.pop("updated_at", UNSET)
         updated_at: Union[Unset, datetime.datetime]
         if _updated_at is None:
@@ -198,6 +205,7 @@ class Cluster:
             account_id=account_id,
             created_at=created_at,
             deleted_at=deleted_at,
+            sql_dns=sql_dns,
             updated_at=updated_at,
         )
 

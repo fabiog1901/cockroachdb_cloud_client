@@ -14,9 +14,9 @@ class AwsEndpointConnection:
     Attributes:
         cloud_provider (ApiCloudProvider):  - GCP: The Google Cloud Platform cloud provider.
              - AWS: The Amazon Web Services cloud provider.
-        endpoint_id (str): EndpointID is the client side of the PrivateLink connection.
-        region_name (str): RegionName is the cloud provider region name (i.e. us-east-1).
-        service_id (str): ServiceID is the server side of the PrivateLink
+        endpoint_id (str): endpoint_id is the client side of the PrivateLink connection.
+        region_name (str): region_name is the cloud provider region name (i.e. us-east-1).
+        service_id (str): service_id is the server side of the PrivateLink
             connection. This is the same as AWSPrivateLinkEndpoint.service_id.
         status (AWSEndpointConnectionStatus): The statuses map to the statuses returned by the AWS API.
     """

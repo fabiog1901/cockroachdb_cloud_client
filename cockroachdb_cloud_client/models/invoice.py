@@ -14,16 +14,17 @@ T = TypeVar("T", bound="Invoice")
 class Invoice:
     """Invoice message represents the details and the total charges associated with
     one billing period, which starts at the beginning of the month and ends at
-    the beginning of the next month. The message also includes details about each
-    invoice item.
+    the beginning of the next month.
+
+    The message also includes details about each invoice item.
 
         Attributes:
-            balances (List[CurrencyAmount]): Balances are the amounts of currency left at the time of the invoice.
-            invoice_id (str): InvoiceID is the unique ID representing the invoice.
-            invoice_items (List[InvoiceItem]): InvoiceItems are sorted by the cluster name.
-            period_end (datetime.datetime): PeriodEnd is the end of the billing period (exclusive).
-            period_start (datetime.datetime): PeriodStart is the start of the billing period (inclusive).
-            totals (List[CurrencyAmount]): Totals is a list of the total amounts per currency.
+            balances (List[CurrencyAmount]): balances are the amounts of currency left at the time of the invoice.
+            invoice_id (str): invoice_id is the unique ID representing the invoice.
+            invoice_items (List[InvoiceItem]): invoice_items are sorted by the cluster name.
+            period_end (datetime.datetime): period_end is the end of the billing period (exclusive).
+            period_start (datetime.datetime): period_start is the start of the billing period (inclusive).
+            totals (List[CurrencyAmount]): totals is a list of the total amounts per currency.
     """
 
     balances: List[CurrencyAmount]

@@ -75,14 +75,16 @@ def sync_detailed(
     client: Client,
     json_body: CockroachCloudSetAwsEndpointConnectionStateJsonBody,
 ) -> Response[Union[Any, AwsEndpointConnection]]:
-    """Sets the AWS Endpoint Connection state based on what is passed in the body: accepted or rejected.
-    The \"status\" in the returned proto does not reflect the latest post-update status, but rather
-    the status before the state is transitioned.
+    """Sets the AWS Endpoint Connection state based on what is passed in the body
+
+     The \"status\" in the returned proto does not reflect the latest post-update
+    status, but rather the status before the state is transitioned.
 
     Args:
         cluster_id (str):
         endpoint_id (str):
-        json_body (CockroachCloudSetAwsEndpointConnectionStateJsonBody):
+        json_body (CockroachCloudSetAwsEndpointConnectionStateJsonBody):  Example: {'status':
+            'ENDPOINT_AVAILABLE'}.
 
     Returns:
         Response[Union[Any, AwsEndpointConnection]]
@@ -110,14 +112,16 @@ def sync(
     client: Client,
     json_body: CockroachCloudSetAwsEndpointConnectionStateJsonBody,
 ) -> Optional[Union[Any, AwsEndpointConnection]]:
-    """Sets the AWS Endpoint Connection state based on what is passed in the body: accepted or rejected.
-    The \"status\" in the returned proto does not reflect the latest post-update status, but rather
-    the status before the state is transitioned.
+    """Sets the AWS Endpoint Connection state based on what is passed in the body
+
+     The \"status\" in the returned proto does not reflect the latest post-update
+    status, but rather the status before the state is transitioned.
 
     Args:
         cluster_id (str):
         endpoint_id (str):
-        json_body (CockroachCloudSetAwsEndpointConnectionStateJsonBody):
+        json_body (CockroachCloudSetAwsEndpointConnectionStateJsonBody):  Example: {'status':
+            'ENDPOINT_AVAILABLE'}.
 
     Returns:
         Response[Union[Any, AwsEndpointConnection]]
@@ -138,14 +142,16 @@ async def asyncio_detailed(
     client: Client,
     json_body: CockroachCloudSetAwsEndpointConnectionStateJsonBody,
 ) -> Response[Union[Any, AwsEndpointConnection]]:
-    """Sets the AWS Endpoint Connection state based on what is passed in the body: accepted or rejected.
-    The \"status\" in the returned proto does not reflect the latest post-update status, but rather
-    the status before the state is transitioned.
+    """Sets the AWS Endpoint Connection state based on what is passed in the body
+
+     The \"status\" in the returned proto does not reflect the latest post-update
+    status, but rather the status before the state is transitioned.
 
     Args:
         cluster_id (str):
         endpoint_id (str):
-        json_body (CockroachCloudSetAwsEndpointConnectionStateJsonBody):
+        json_body (CockroachCloudSetAwsEndpointConnectionStateJsonBody):  Example: {'status':
+            'ENDPOINT_AVAILABLE'}.
 
     Returns:
         Response[Union[Any, AwsEndpointConnection]]
@@ -171,14 +177,16 @@ async def asyncio(
     client: Client,
     json_body: CockroachCloudSetAwsEndpointConnectionStateJsonBody,
 ) -> Optional[Union[Any, AwsEndpointConnection]]:
-    """Sets the AWS Endpoint Connection state based on what is passed in the body: accepted or rejected.
-    The \"status\" in the returned proto does not reflect the latest post-update status, but rather
-    the status before the state is transitioned.
+    """Sets the AWS Endpoint Connection state based on what is passed in the body
+
+     The \"status\" in the returned proto does not reflect the latest post-update
+    status, but rather the status before the state is transitioned.
 
     Args:
         cluster_id (str):
         endpoint_id (str):
-        json_body (CockroachCloudSetAwsEndpointConnectionStateJsonBody):
+        json_body (CockroachCloudSetAwsEndpointConnectionStateJsonBody):  Example: {'status':
+            'ENDPOINT_AVAILABLE'}.
 
     Returns:
         Response[Union[Any, AwsEndpointConnection]]

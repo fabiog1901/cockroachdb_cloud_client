@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: Client,
 ) -> Response[Union[AllowlistEntry, Any]]:
-    """Delete an IP allowlist entry.
+    """Delete an IP allowlist entry
 
     Args:
         cluster_id (str):
@@ -102,7 +102,7 @@ def sync(
     *,
     client: Client,
 ) -> Optional[Union[AllowlistEntry, Any]]:
-    """Delete an IP allowlist entry.
+    """Delete an IP allowlist entry
 
     Args:
         cluster_id (str):
@@ -128,7 +128,7 @@ async def asyncio_detailed(
     *,
     client: Client,
 ) -> Response[Union[AllowlistEntry, Any]]:
-    """Delete an IP allowlist entry.
+    """Delete an IP allowlist entry
 
     Args:
         cluster_id (str):
@@ -159,7 +159,7 @@ async def asyncio(
     *,
     client: Client,
 ) -> Optional[Union[AllowlistEntry, Any]]:
-    """Delete an IP allowlist entry.
+    """Delete an IP allowlist entry
 
     Args:
         cluster_id (str):

@@ -11,7 +11,7 @@ T = TypeVar("T", bound="ListInvoicesResponse")
 class ListInvoicesResponse:
     """
     Attributes:
-        invoices (List[Invoice]): Invoices are sorted by PeriodStart time.
+        invoices (List[Invoice]): invoices are sorted by period_start time.
     """
 
     invoices: List[Invoice]

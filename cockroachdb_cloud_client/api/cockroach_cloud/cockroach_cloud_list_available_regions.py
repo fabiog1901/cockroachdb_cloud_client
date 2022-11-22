@@ -106,7 +106,7 @@ def sync_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListAvailableRegionsPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListAvailableRegionsResponse]]:
-    """List the regions available for new clusters and nodes.
+    """List the regions available for new clusters and nodes
 
      Sort order: Distance (based on client IP address)
 
@@ -151,7 +151,7 @@ def sync(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListAvailableRegionsPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListAvailableRegionsResponse]]:
-    """List the regions available for new clusters and nodes.
+    """List the regions available for new clusters and nodes
 
      Sort order: Distance (based on client IP address)
 
@@ -189,7 +189,7 @@ async def asyncio_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListAvailableRegionsPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListAvailableRegionsResponse]]:
-    """List the regions available for new clusters and nodes.
+    """List the regions available for new clusters and nodes
 
      Sort order: Distance (based on client IP address)
 
@@ -232,7 +232,7 @@ async def asyncio(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListAvailableRegionsPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListAvailableRegionsResponse]]:
-    """List the regions available for new clusters and nodes.
+    """List the regions available for new clusters and nodes
 
      Sort order: Distance (based on client IP address)
 

@@ -93,7 +93,7 @@ def sync_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListSQLUsersPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListSQLUsersResponse]]:
-    """List SQL users for a cluster.
+    """List SQL users for a cluster
 
      Sort order: Username
 
@@ -134,7 +134,7 @@ def sync(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListSQLUsersPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListSQLUsersResponse]]:
-    """List SQL users for a cluster.
+    """List SQL users for a cluster
 
      Sort order: Username
 
@@ -168,7 +168,7 @@ async def asyncio_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListSQLUsersPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListSQLUsersResponse]]:
-    """List SQL users for a cluster.
+    """List SQL users for a cluster
 
      Sort order: Username
 
@@ -207,7 +207,7 @@ async def asyncio(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListSQLUsersPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListSQLUsersResponse]]:
-    """List SQL users for a cluster.
+    """List SQL users for a cluster
 
      Sort order: Username
 

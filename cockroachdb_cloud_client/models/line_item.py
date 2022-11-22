@@ -12,12 +12,12 @@ T = TypeVar("T", bound="LineItem")
 class LineItem:
     """
     Attributes:
-        description (str): Description contains the details of the line item (i.e t3 micro).
-        quantity (float): Quantity is the number of the specific line items used.
+        description (str): description contains the details of the line item (i.e t3 micro).
+        quantity (float): quantity is the number of the specific line items used.
         quantity_unit (QuantityUnitType): Billing
             QuantityUnitType is the unit type for a quantity of billing line item.
         total (CurrencyAmount):
-        unit_cost (float): UnitCost is the cost per unit of line item.
+        unit_cost (float): unit_cost is the cost per unit of line item.
     """
 
     description: str

@@ -2,7 +2,9 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.cmek_key_type import CMEKKeyType
+from ..models.cmek_key_type_enumerates_types_of_customer_managed_keys import (
+    CMEKKeyTypeEnumeratesTypesOfCustomerManagedKeys,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CMEKKeySpecification")
@@ -11,19 +13,20 @@ T = TypeVar("T", bound="CMEKKeySpecification")
 @attr.s(auto_attribs=True)
 class CMEKKeySpecification:
     """CMEKKeySpecification contains all the details necessary to use a customer-provided
-    encryption key. This involves the type/location of the key and the principal
-    to authenticate as when accessing it.
+    encryption key.
+
+    This involves the type/location of the key and the principal to authenticate as
+    when accessing it.
 
         Attributes:
             auth_principal (Union[Unset, str]):
-            type (Union[Unset, CMEKKeyType]): CMEKKeyType enumerates types of customer-managed keys.
-
-                 - UNKNOWN_KEY_TYPE: UNKNOWN should never be used; if it is used, it indicates a bug.
+            type (Union[Unset, CMEKKeyTypeEnumeratesTypesOfCustomerManagedKeys]): - UNKNOWN_KEY_TYPE: UNKNOWN should never
+                be used; if it is used, it indicates a bug.
             uri (Union[Unset, str]):
     """
 
     auth_principal: Union[Unset, str] = UNSET
-    type: Union[Unset, CMEKKeyType] = UNSET
+    type: Union[Unset, CMEKKeyTypeEnumeratesTypesOfCustomerManagedKeys] = UNSET
     uri: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -53,13 +56,13 @@ class CMEKKeySpecification:
         auth_principal = d.pop("auth_principal", UNSET)
 
         _type = d.pop("type", UNSET)
-        type: Union[Unset, CMEKKeyType]
+        type: Union[Unset, CMEKKeyTypeEnumeratesTypesOfCustomerManagedKeys]
         if _type is None:
             type = None
         elif isinstance(_type, Unset):
             type = UNSET
         else:
-            type = CMEKKeyType(_type)
+            type = CMEKKeyTypeEnumeratesTypesOfCustomerManagedKeys(_type)
 
         uri = d.pop("uri", UNSET)
 

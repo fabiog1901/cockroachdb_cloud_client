@@ -73,7 +73,7 @@ def sync_detailed(
     client: Client,
     json_body: CockroachCloudCreatePrivateEndpointServicesJsonBody,
 ) -> Response[Union[Any, PrivateEndpointServices]]:
-    """Creates all PrivateEndpointServices for a given cluster.
+    """Creates all PrivateEndpointServices for a given cluster
 
     Args:
         cluster_id (str):
@@ -103,7 +103,7 @@ def sync(
     client: Client,
     json_body: CockroachCloudCreatePrivateEndpointServicesJsonBody,
 ) -> Optional[Union[Any, PrivateEndpointServices]]:
-    """Creates all PrivateEndpointServices for a given cluster.
+    """Creates all PrivateEndpointServices for a given cluster
 
     Args:
         cluster_id (str):
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     client: Client,
     json_body: CockroachCloudCreatePrivateEndpointServicesJsonBody,
 ) -> Response[Union[Any, PrivateEndpointServices]]:
-    """Creates all PrivateEndpointServices for a given cluster.
+    """Creates all PrivateEndpointServices for a given cluster
 
     Args:
         cluster_id (str):
@@ -154,7 +154,7 @@ async def asyncio(
     client: Client,
     json_body: CockroachCloudCreatePrivateEndpointServicesJsonBody,
 ) -> Optional[Union[Any, PrivateEndpointServices]]:
-    """Creates all PrivateEndpointServices for a given cluster.
+    """Creates all PrivateEndpointServices for a given cluster
 
     Args:
         cluster_id (str):

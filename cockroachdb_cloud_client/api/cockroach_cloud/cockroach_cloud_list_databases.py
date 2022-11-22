@@ -95,7 +95,7 @@ def sync_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListDatabasesPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListDatabasesResponse]]:
-    """List databases for a cluster.
+    """List databases for a cluster
 
      Sort order: Database name ascending
 
@@ -137,7 +137,7 @@ def sync(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListDatabasesPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListDatabasesResponse]]:
-    """List databases for a cluster.
+    """List databases for a cluster
 
      Sort order: Database name ascending
 
@@ -172,7 +172,7 @@ async def asyncio_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListDatabasesPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListDatabasesResponse]]:
-    """List databases for a cluster.
+    """List databases for a cluster
 
      Sort order: Database name ascending
 
@@ -212,7 +212,7 @@ async def asyncio(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListDatabasesPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListDatabasesResponse]]:
-    """List databases for a cluster.
+    """List databases for a cluster
 
      Sort order: Database name ascending
 

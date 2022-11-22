@@ -9,14 +9,14 @@ T = TypeVar("T", bound="DedicatedHardwareConfig")
 class DedicatedHardwareConfig:
     """
     Attributes:
-        disk_iops (int): DiskIOPs is the number of disk I/O operations per second that are
+        disk_iops (int): disk_iops is the number of disk I/O operations per second that are
             permitted on each node in the cluster. Zero indicates the cloud
             provider-specific default.
-        machine_type (str): MachineType is the machine type identifier within the given cloud
+        machine_type (str): machine_type is the machine type identifier within the given cloud
             provider, ex. m5.xlarge, n2-standard-4.
-        memory_gib (float): MemoryGiB is the memory GiB per node in the cluster.
-        num_virtual_cpus (int): NumVirtualCPUs is the number of virtual CPUs per node in the cluster.
-        storage_gib (int): StorageGiB is the number of storage GiB per node in the cluster.
+        memory_gib (float): memory_gib is the memory GiB per node in the cluster.
+        num_virtual_cpus (int): num_virtual_cpus is the number of virtual CPUs per node in the cluster.
+        storage_gib (int): storage_gib is the number of storage GiB per node in the cluster.
     """
 
     disk_iops: int

@@ -68,7 +68,7 @@ def sync_detailed(
     client: Client,
     json_body: AllowlistEntry,
 ) -> Response[Union[AllowlistEntry, Any]]:
-    """Add a new CIDR address to the IP allowlist.
+    """Add a new CIDR address to the IP allowlist
 
     Args:
         cluster_id (str):
@@ -99,7 +99,7 @@ def sync(
     client: Client,
     json_body: AllowlistEntry,
 ) -> Optional[Union[AllowlistEntry, Any]]:
-    """Add a new CIDR address to the IP allowlist.
+    """Add a new CIDR address to the IP allowlist
 
     Args:
         cluster_id (str):
@@ -123,7 +123,7 @@ async def asyncio_detailed(
     client: Client,
     json_body: AllowlistEntry,
 ) -> Response[Union[AllowlistEntry, Any]]:
-    """Add a new CIDR address to the IP allowlist.
+    """Add a new CIDR address to the IP allowlist
 
     Args:
         cluster_id (str):
@@ -152,7 +152,7 @@ async def asyncio(
     client: Client,
     json_body: AllowlistEntry,
 ) -> Optional[Union[AllowlistEntry, Any]]:
-    """Add a new CIDR address to the IP allowlist.
+    """Add a new CIDR address to the IP allowlist
 
     Args:
         cluster_id (str):

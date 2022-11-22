@@ -12,8 +12,8 @@ T = TypeVar("T", bound="CurrencyAmount")
 class CurrencyAmount:
     """
     Attributes:
-        amount (Union[Unset, float]): Amount is the quantity of currency.
-        currency (Union[Unset, Currency]): Currency is the set of currencies supported in CockroachCloud.
+        amount (Union[Unset, float]): amount is the quantity of currency.
+        currency (Union[Unset, Currency]): Currency is the set of currencies supported in CockroachDB Cloud.
     """
 
     amount: Union[Unset, float] = UNSET

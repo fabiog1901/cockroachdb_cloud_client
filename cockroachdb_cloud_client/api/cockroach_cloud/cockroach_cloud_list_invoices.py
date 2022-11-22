@@ -61,8 +61,7 @@ def sync_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, ListInvoicesResponse]]:
-    """Billing
-    List invoices for a given organization.
+    """List invoices for a given organization
 
      Sort order: invoice start date ascending
 
@@ -86,8 +85,7 @@ def sync(
     *,
     client: Client,
 ) -> Optional[Union[Any, ListInvoicesResponse]]:
-    """Billing
-    List invoices for a given organization.
+    """List invoices for a given organization
 
      Sort order: invoice start date ascending
 
@@ -104,8 +102,7 @@ async def asyncio_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, ListInvoicesResponse]]:
-    """Billing
-    List invoices for a given organization.
+    """List invoices for a given organization
 
      Sort order: invoice start date ascending
 
@@ -127,8 +124,7 @@ async def asyncio(
     *,
     client: Client,
 ) -> Optional[Union[Any, ListInvoicesResponse]]:
-    """Billing
-    List invoices for a given organization.
+    """List invoices for a given organization
 
      Sort order: invoice start date ascending
 

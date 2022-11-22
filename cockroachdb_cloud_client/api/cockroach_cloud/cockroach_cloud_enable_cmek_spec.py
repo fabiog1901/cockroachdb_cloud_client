@@ -71,7 +71,7 @@ def sync_detailed(
     client: Client,
     json_body: CockroachCloudEnableCMEKSpecCMEKClusterSpecification,
 ) -> Response[Union[Any, CMEKClusterInfo]]:
-    """Enable CMEK for a cluster.
+    """Enable CMEK for a cluster
 
     Args:
         cluster_id (str):
@@ -104,7 +104,7 @@ def sync(
     client: Client,
     json_body: CockroachCloudEnableCMEKSpecCMEKClusterSpecification,
 ) -> Optional[Union[Any, CMEKClusterInfo]]:
-    """Enable CMEK for a cluster.
+    """Enable CMEK for a cluster
 
     Args:
         cluster_id (str):
@@ -130,7 +130,7 @@ async def asyncio_detailed(
     client: Client,
     json_body: CockroachCloudEnableCMEKSpecCMEKClusterSpecification,
 ) -> Response[Union[Any, CMEKClusterInfo]]:
-    """Enable CMEK for a cluster.
+    """Enable CMEK for a cluster
 
     Args:
         cluster_id (str):
@@ -161,7 +161,7 @@ async def asyncio(
     client: Client,
     json_body: CockroachCloudEnableCMEKSpecCMEKClusterSpecification,
 ) -> Optional[Union[Any, CMEKClusterInfo]]:
-    """Enable CMEK for a cluster.
+    """Enable CMEK for a cluster
 
     Args:
         cluster_id (str):

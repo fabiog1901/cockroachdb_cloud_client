@@ -99,7 +99,7 @@ def sync_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListClusterNodesPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListClusterNodesResponse]]:
-    """List nodes for a cluster.
+    """List nodes for a cluster
 
      Sort order: Region name, node name
 
@@ -144,7 +144,7 @@ def sync(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListClusterNodesPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListClusterNodesResponse]]:
-    """List nodes for a cluster.
+    """List nodes for a cluster
 
      Sort order: Region name, node name
 
@@ -182,7 +182,7 @@ async def asyncio_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListClusterNodesPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListClusterNodesResponse]]:
-    """List nodes for a cluster.
+    """List nodes for a cluster
 
      Sort order: Region name, node name
 
@@ -225,7 +225,7 @@ async def asyncio(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListClusterNodesPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListClusterNodesResponse]]:
-    """List nodes for a cluster.
+    """List nodes for a cluster
 
      Sort order: Region name, node name
 

@@ -1,4 +1,4 @@
-# cockroachdb_cloud_client
+# cockroachdb-cloud-client
 
 A client library for accessing the CockroachDB Cloud API.
 

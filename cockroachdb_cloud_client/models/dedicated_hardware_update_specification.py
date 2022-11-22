@@ -12,11 +12,11 @@ T = TypeVar("T", bound="DedicatedHardwareUpdateSpecification")
 class DedicatedHardwareUpdateSpecification:
     """
     Attributes:
-        disk_iops (Union[Unset, int]): DiskIOPs is the number of disk I/O operations per second that are
+        disk_iops (Union[Unset, int]): disk_iops is the number of disk I/O operations per second that are
             permitted on each node in the cluster. Zero indicates the cloud
             provider-specific default. Only available for AWS clusters.
         machine_spec (Union[Unset, DedicatedMachineTypeSpecification]):
-        storage_gib (Union[Unset, int]): StorageGiB is the number of storage GiB per node in the cluster.
+        storage_gib (Union[Unset, int]): storage_gib is the number of storage GiB per node in the cluster.
     """
 
     disk_iops: Union[Unset, int] = UNSET

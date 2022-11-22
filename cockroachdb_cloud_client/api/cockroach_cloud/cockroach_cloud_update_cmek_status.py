@@ -71,7 +71,7 @@ def sync_detailed(
     client: Client,
     json_body: CockroachCloudUpdateCMEKStatusUpdateCMEKStatusRequest,
 ) -> Response[Union[Any, CMEKClusterInfo]]:
-    """Update the CMEK-related status for a cluster.
+    """Update the CMEK-related status for a cluster
 
     Args:
         cluster_id (str):
@@ -102,7 +102,7 @@ def sync(
     client: Client,
     json_body: CockroachCloudUpdateCMEKStatusUpdateCMEKStatusRequest,
 ) -> Optional[Union[Any, CMEKClusterInfo]]:
-    """Update the CMEK-related status for a cluster.
+    """Update the CMEK-related status for a cluster
 
     Args:
         cluster_id (str):
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     client: Client,
     json_body: CockroachCloudUpdateCMEKStatusUpdateCMEKStatusRequest,
 ) -> Response[Union[Any, CMEKClusterInfo]]:
-    """Update the CMEK-related status for a cluster.
+    """Update the CMEK-related status for a cluster
 
     Args:
         cluster_id (str):
@@ -155,7 +155,7 @@ async def asyncio(
     client: Client,
     json_body: CockroachCloudUpdateCMEKStatusUpdateCMEKStatusRequest,
 ) -> Optional[Union[Any, CMEKClusterInfo]]:
-    """Update the CMEK-related status for a cluster.
+    """Update the CMEK-related status for a cluster
 
     Args:
         cluster_id (str):

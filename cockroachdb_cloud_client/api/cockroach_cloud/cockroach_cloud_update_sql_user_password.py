@@ -75,7 +75,7 @@ def sync_detailed(
     client: Client,
     json_body: CockroachCloudUpdateSQLUserPasswordUpdateSQLUserPasswordRequest,
 ) -> Response[Union[Any, SQLUser]]:
-    """Update a SQL user's password.
+    """Update a SQL user's password
 
     Args:
         cluster_id (str):
@@ -109,7 +109,7 @@ def sync(
     client: Client,
     json_body: CockroachCloudUpdateSQLUserPasswordUpdateSQLUserPasswordRequest,
 ) -> Optional[Union[Any, SQLUser]]:
-    """Update a SQL user's password.
+    """Update a SQL user's password
 
     Args:
         cluster_id (str):
@@ -136,7 +136,7 @@ async def asyncio_detailed(
     client: Client,
     json_body: CockroachCloudUpdateSQLUserPasswordUpdateSQLUserPasswordRequest,
 ) -> Response[Union[Any, SQLUser]]:
-    """Update a SQL user's password.
+    """Update a SQL user's password
 
     Args:
         cluster_id (str):
@@ -168,7 +168,7 @@ async def asyncio(
     client: Client,
     json_body: CockroachCloudUpdateSQLUserPasswordUpdateSQLUserPasswordRequest,
 ) -> Optional[Union[Any, SQLUser]]:
-    """Update a SQL user's password.
+    """Update a SQL user's password
 
     Args:
         cluster_id (str):

@@ -95,7 +95,7 @@ def sync_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListAllowlistEntriesPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListAllowlistEntriesResponse]]:
-    """Get the IP allowlist and propagation status for a cluster.
+    """Get the IP allowlist and propagation status for a cluster
 
      Sort order: CIDR address
 
@@ -137,7 +137,7 @@ def sync(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListAllowlistEntriesPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListAllowlistEntriesResponse]]:
-    """Get the IP allowlist and propagation status for a cluster.
+    """Get the IP allowlist and propagation status for a cluster
 
      Sort order: CIDR address
 
@@ -172,7 +172,7 @@ async def asyncio_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListAllowlistEntriesPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListAllowlistEntriesResponse]]:
-    """Get the IP allowlist and propagation status for a cluster.
+    """Get the IP allowlist and propagation status for a cluster
 
      Sort order: CIDR address
 
@@ -212,7 +212,7 @@ async def asyncio(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListAllowlistEntriesPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListAllowlistEntriesResponse]]:
-    """Get the IP allowlist and propagation status for a cluster.
+    """Get the IP allowlist and propagation status for a cluster
 
      Sort order: CIDR address
 

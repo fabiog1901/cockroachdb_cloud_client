@@ -63,7 +63,7 @@ def sync_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, Invoice]]:
-    """Gets a specific invoice for an organization.
+    """Gets a specific invoice for an organization
 
     Args:
         invoice_id (str):
@@ -90,7 +90,7 @@ def sync(
     *,
     client: Client,
 ) -> Optional[Union[Any, Invoice]]:
-    """Gets a specific invoice for an organization.
+    """Gets a specific invoice for an organization
 
     Args:
         invoice_id (str):
@@ -110,7 +110,7 @@ async def asyncio_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, Invoice]]:
-    """Gets a specific invoice for an organization.
+    """Gets a specific invoice for an organization
 
     Args:
         invoice_id (str):
@@ -135,7 +135,7 @@ async def asyncio(
     *,
     client: Client,
 ) -> Optional[Union[Any, Invoice]]:
-    """Gets a specific invoice for an organization.
+    """Gets a specific invoice for an organization
 
     Args:
         invoice_id (str):

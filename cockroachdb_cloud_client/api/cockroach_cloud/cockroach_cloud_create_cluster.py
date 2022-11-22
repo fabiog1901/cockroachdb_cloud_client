@@ -67,7 +67,7 @@ def sync_detailed(
     client: Client,
     json_body: CreateClusterRequest,
 ) -> Response[Union[Any, Cluster]]:
-    """Create and initialize a new cluster.
+    """Create and initialize a new cluster
 
     Args:
         json_body (CreateClusterRequest):  Example: {'name': 'test-cluster', 'provider': 'GCP',
@@ -95,7 +95,7 @@ def sync(
     client: Client,
     json_body: CreateClusterRequest,
 ) -> Optional[Union[Any, Cluster]]:
-    """Create and initialize a new cluster.
+    """Create and initialize a new cluster
 
     Args:
         json_body (CreateClusterRequest):  Example: {'name': 'test-cluster', 'provider': 'GCP',
@@ -116,7 +116,7 @@ async def asyncio_detailed(
     client: Client,
     json_body: CreateClusterRequest,
 ) -> Response[Union[Any, Cluster]]:
-    """Create and initialize a new cluster.
+    """Create and initialize a new cluster
 
     Args:
         json_body (CreateClusterRequest):  Example: {'name': 'test-cluster', 'provider': 'GCP',
@@ -142,7 +142,7 @@ async def asyncio(
     client: Client,
     json_body: CreateClusterRequest,
 ) -> Optional[Union[Any, Cluster]]:
-    """Create and initialize a new cluster.
+    """Create and initialize a new cluster
 
     Args:
         json_body (CreateClusterRequest):  Example: {'name': 'test-cluster', 'provider': 'GCP',

@@ -63,7 +63,7 @@ def sync_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, Cluster]]:
-    """Get extended information about a cluster.
+    """Get extended information about a cluster
 
     Args:
         cluster_id (str):
@@ -90,7 +90,7 @@ def sync(
     *,
     client: Client,
 ) -> Optional[Union[Any, Cluster]]:
-    """Get extended information about a cluster.
+    """Get extended information about a cluster
 
     Args:
         cluster_id (str):
@@ -110,7 +110,7 @@ async def asyncio_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, Cluster]]:
-    """Get extended information about a cluster.
+    """Get extended information about a cluster
 
     Args:
         cluster_id (str):
@@ -135,7 +135,7 @@ async def asyncio(
     *,
     client: Client,
 ) -> Optional[Union[Any, Cluster]]:
-    """Get extended information about a cluster.
+    """Get extended information about a cluster
 
     Args:
         cluster_id (str):

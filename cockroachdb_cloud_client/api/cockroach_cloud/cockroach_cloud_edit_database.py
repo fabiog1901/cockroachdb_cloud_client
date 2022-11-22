@@ -71,7 +71,7 @@ def sync_detailed(
     client: Client,
     json_body: CockroachCloudEditDatabaseUpdateDatabaseRequest,
 ) -> Response[Union[Any, Database]]:
-    """Update a database.
+    """Update a database
 
     Args:
         cluster_id (str):
@@ -102,7 +102,7 @@ def sync(
     client: Client,
     json_body: CockroachCloudEditDatabaseUpdateDatabaseRequest,
 ) -> Optional[Union[Any, Database]]:
-    """Update a database.
+    """Update a database
 
     Args:
         cluster_id (str):
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     client: Client,
     json_body: CockroachCloudEditDatabaseUpdateDatabaseRequest,
 ) -> Response[Union[Any, Database]]:
-    """Update a database.
+    """Update a database
 
     Args:
         cluster_id (str):
@@ -155,7 +155,7 @@ async def asyncio(
     client: Client,
     json_body: CockroachCloudEditDatabaseUpdateDatabaseRequest,
 ) -> Optional[Union[Any, Database]]:
-    """Update a database.
+    """Update a database
 
     Args:
         cluster_id (str):

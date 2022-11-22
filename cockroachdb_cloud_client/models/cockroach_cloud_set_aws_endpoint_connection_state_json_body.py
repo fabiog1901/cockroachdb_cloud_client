@@ -11,6 +11,9 @@ T = TypeVar("T", bound="CockroachCloudSetAwsEndpointConnectionStateJsonBody")
 @attr.s(auto_attribs=True)
 class CockroachCloudSetAwsEndpointConnectionStateJsonBody:
     """
+    Example:
+        {'status': 'ENDPOINT_AVAILABLE'}
+
     Attributes:
         status (Union[Unset, AWSEndpointConnectionStatus]): The statuses map to the statuses returned by the AWS API.
     """

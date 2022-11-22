@@ -1,0 +1,8 @@
+---
+project_name_override: cockroachdb_cloud_client
+#package_name_override: cockroachdb_cloud
+# package_version_override: 2022-09-20
+#class_overrides:
+#  cockroach-db-cloud-api-client:
+#    class_name: cockroachdb_cloud
+#    module_name: cockroachdb_cloud

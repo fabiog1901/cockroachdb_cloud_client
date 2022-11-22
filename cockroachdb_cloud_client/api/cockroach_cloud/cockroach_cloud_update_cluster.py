@@ -77,7 +77,7 @@ def sync_detailed(
     json_body: UpdateClusterSpecification,
     field_mask: Union[Unset, None, str] = UNSET,
 ) -> Response[Union[Any, Cluster]]:
-    """Scale or edit a cluster.
+    """Scale or edit a cluster
 
     Args:
         cluster_id (str):
@@ -111,7 +111,7 @@ def sync(
     json_body: UpdateClusterSpecification,
     field_mask: Union[Unset, None, str] = UNSET,
 ) -> Optional[Union[Any, Cluster]]:
-    """Scale or edit a cluster.
+    """Scale or edit a cluster
 
     Args:
         cluster_id (str):
@@ -138,7 +138,7 @@ async def asyncio_detailed(
     json_body: UpdateClusterSpecification,
     field_mask: Union[Unset, None, str] = UNSET,
 ) -> Response[Union[Any, Cluster]]:
-    """Scale or edit a cluster.
+    """Scale or edit a cluster
 
     Args:
         cluster_id (str):
@@ -170,7 +170,7 @@ async def asyncio(
     json_body: UpdateClusterSpecification,
     field_mask: Union[Unset, None, str] = UNSET,
 ) -> Optional[Union[Any, Cluster]]:
-    """Scale or edit a cluster.
+    """Scale or edit a cluster
 
     Args:
         cluster_id (str):

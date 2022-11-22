@@ -71,7 +71,7 @@ def sync_detailed(
     client: Client,
     json_body: CockroachCloudCreateDatabaseCreateDatabaseRequest,
 ) -> Response[Union[Any, Database]]:
-    """Create a new database.
+    """Create a new database
 
     Args:
         cluster_id (str):
@@ -102,7 +102,7 @@ def sync(
     client: Client,
     json_body: CockroachCloudCreateDatabaseCreateDatabaseRequest,
 ) -> Optional[Union[Any, Database]]:
-    """Create a new database.
+    """Create a new database
 
     Args:
         cluster_id (str):
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     client: Client,
     json_body: CockroachCloudCreateDatabaseCreateDatabaseRequest,
 ) -> Response[Union[Any, Database]]:
-    """Create a new database.
+    """Create a new database
 
     Args:
         cluster_id (str):
@@ -155,7 +155,7 @@ async def asyncio(
     client: Client,
     json_body: CockroachCloudCreateDatabaseCreateDatabaseRequest,
 ) -> Optional[Union[Any, Database]]:
-    """Create a new database.
+    """Create a new database
 
     Args:
         cluster_id (str):

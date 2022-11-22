@@ -11,9 +11,9 @@ T = TypeVar("T", bound="DedicatedMachineTypeSpecification")
 class DedicatedMachineTypeSpecification:
     """
     Attributes:
-        machine_type (Union[Unset, str]): MachineType is the machine type identifier within the given cloud
+        machine_type (Union[Unset, str]): machine_type is the machine type identifier within the given cloud
             provider, ex. m5.xlarge, n2-standard-4.
-        num_virtual_cpus (Union[Unset, int]): NumVirtualCPUs may be used to automatically select a machine type
+        num_virtual_cpus (Union[Unset, int]): num_virtual_cpus may be used to automatically select a machine type
             according to the desired number of vCPUs.
     """
 

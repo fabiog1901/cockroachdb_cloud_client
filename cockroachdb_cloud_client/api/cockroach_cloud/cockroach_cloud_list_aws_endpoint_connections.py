@@ -65,7 +65,7 @@ def sync_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, AwsEndpointConnections]]:
-    """Lists all AwsEndpointConnections for a given cluster.
+    """Lists all AwsEndpointConnections for a given cluster
 
     Args:
         cluster_id (str):
@@ -92,7 +92,7 @@ def sync(
     *,
     client: Client,
 ) -> Optional[Union[Any, AwsEndpointConnections]]:
-    """Lists all AwsEndpointConnections for a given cluster.
+    """Lists all AwsEndpointConnections for a given cluster
 
     Args:
         cluster_id (str):
@@ -112,7 +112,7 @@ async def asyncio_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, AwsEndpointConnections]]:
-    """Lists all AwsEndpointConnections for a given cluster.
+    """Lists all AwsEndpointConnections for a given cluster
 
     Args:
         cluster_id (str):
@@ -137,7 +137,7 @@ async def asyncio(
     *,
     client: Client,
 ) -> Optional[Union[Any, AwsEndpointConnections]]:
-    """Lists all AwsEndpointConnections for a given cluster.
+    """Lists all AwsEndpointConnections for a given cluster
 
     Args:
         cluster_id (str):

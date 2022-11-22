@@ -16,7 +16,7 @@ class PrivateEndpointService:
         aws (AWSPrivateLinkServiceDetail):
         cloud_provider (ApiCloudProvider):  - GCP: The Google Cloud Platform cloud provider.
              - AWS: The Amazon Web Services cloud provider.
-        region_name (str): RegionName is the cloud provider region name (i.e. us-east-1).
+        region_name (str): region_name is the cloud provider region name (i.e. us-east-1).
         status (PrivateEndpoints): - ENDPOINT_SERVICE_STATUS_DELETE_FAILED: One note is that if the service is deleted,
             there is no longer
             a record, hence there is no "DELETED" status.

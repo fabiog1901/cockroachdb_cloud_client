@@ -11,9 +11,10 @@ T = TypeVar("T", bound="CMEKRegionInfo")
 
 @attr.s(auto_attribs=True)
 class CMEKRegionInfo:
-    """CMEKRegionInfo contains the status of CMEK within a region. This includes
-    current and past key specifications used within the region, as well as the
-    status of those specifications.
+    """CMEKRegionInfo contains the status of CMEK within a region.
+
+    This includes current and past key specifications used within the region,
+    as well as the status of those specifications
 
         Attributes:
             key_infos (Union[Unset, List[CMEKKeyInfo]]):

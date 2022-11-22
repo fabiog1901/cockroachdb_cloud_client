@@ -20,8 +20,10 @@ class CMEKKeyInfo:
             created_at (Union[Unset, datetime.datetime]):
             spec (Union[Unset, CMEKKeySpecification]): CMEKKeySpecification contains all the details necessary to use a
                 customer-provided
-                encryption key. This involves the type/location of the key and the principal
-                to authenticate as when accessing it.
+                encryption key.
+
+                This involves the type/location of the key and the principal to authenticate as
+                when accessing it.
             status (Union[Unset, CMEKStatus]): CMEKStatus describes the current status of CMEK for an entire CRDB cluster
                 or a CMEK key within a region.
 

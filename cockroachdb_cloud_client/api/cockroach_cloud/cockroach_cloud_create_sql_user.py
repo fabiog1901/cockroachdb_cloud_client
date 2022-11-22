@@ -71,7 +71,7 @@ def sync_detailed(
     client: Client,
     json_body: CockroachCloudCreateSQLUserCreateSQLUserRequest,
 ) -> Response[Union[Any, SQLUser]]:
-    """Create a new SQL user.
+    """Create a new SQL user
 
     Args:
         cluster_id (str):
@@ -102,7 +102,7 @@ def sync(
     client: Client,
     json_body: CockroachCloudCreateSQLUserCreateSQLUserRequest,
 ) -> Optional[Union[Any, SQLUser]]:
-    """Create a new SQL user.
+    """Create a new SQL user
 
     Args:
         cluster_id (str):
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     client: Client,
     json_body: CockroachCloudCreateSQLUserCreateSQLUserRequest,
 ) -> Response[Union[Any, SQLUser]]:
-    """Create a new SQL user.
+    """Create a new SQL user
 
     Args:
         cluster_id (str):
@@ -155,7 +155,7 @@ async def asyncio(
     client: Client,
     json_body: CockroachCloudCreateSQLUserCreateSQLUserRequest,
 ) -> Optional[Union[Any, SQLUser]]:
-    """Create a new SQL user.
+    """Create a new SQL user
 
     Args:
         cluster_id (str):

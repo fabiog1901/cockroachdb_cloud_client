@@ -9,13 +9,13 @@ T = TypeVar("T", bound="Region")
 class Region:
     """
     Attributes:
-        internal_dns (str): InternalDns is the internal DNS name of the cluster within the cloud provider's network. It
+        internal_dns (str): internal_dns is the internal DNS name of the cluster within the cloud provider's network. It
             is used to connect to the cluster with PrivateLink or VPC peering.
         name (str):
-        node_count (int): NodeCount will be 0 for serverless clusters.
-        sql_dns (str): SqlDns is the DNS name of SQL interface of the cluster. It is used to connect to the cluster with
-            IP allowlisting.
-        ui_dns (str): UiDns is the DNS name used when connecting to the DB Console for the cluster.
+        node_count (int): node_count will be 0 for serverless clusters.
+        sql_dns (str): sql_dns is the DNS name of SQL interface of the cluster. It is used to connect to the cluster
+            with IP allowlisting.
+        ui_dns (str): ui_dns is the DNS name used when connecting to the DB Console for the cluster.
     """
 
     internal_dns: str

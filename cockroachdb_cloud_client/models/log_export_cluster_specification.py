@@ -2,6 +2,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
+from ..models.log_export_group import LogExportGroup
 from ..models.log_export_type import LogExportType
 from ..types import UNSET, Unset
 
@@ -20,20 +21,43 @@ class LogExportClusterSpecification:
                 that the cluster account can assume to write to CloudWatch or the
                 GCP Project ID that the cluster service account has permissions to
                 write to for cloud logging.
+            groups (Union[Unset, List[LogExportGroup]]): groups is a collection of log group configurations to customize
+                which CRDB channels get aggregated into different groups at the
+                target sink. Unconfigured channels will be sent to the default
+                locations via the settings above.
             log_name (Union[Unset, str]): log_name is an identifier for the logs in the customer's log sink.
+            redact (Union[Unset, bool]): redact controls whether logs are redacted before forwarding to
+                customer sinks. By default they are not redacted.
+            region (Union[Unset, str]): region controls whether all logs are sent to a specific region in
+                the customer sink. By default, logs will remain their region of
+                origin depending on the cluster node's region.
             type (Union[Unset, LogExportType]): LogExportType encodes the cloud selection that we're exporting to
-                along with the cloud logging platform. Currently, each cloud has a
-                single logging platform.
+                along with the cloud logging platform.
+
+                Currently, each cloud has a single logging platform.
     """
 
     auth_principal: Union[Unset, str] = UNSET
+    groups: Union[Unset, List[LogExportGroup]] = UNSET
     log_name: Union[Unset, str] = UNSET
+    redact: Union[Unset, bool] = UNSET
+    region: Union[Unset, str] = UNSET
     type: Union[Unset, LogExportType] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         auth_principal = self.auth_principal
+        groups: Union[Unset, List[Dict[str, Any]]] = UNSET
+        if not isinstance(self.groups, Unset):
+            groups = []
+            for groups_item_data in self.groups:
+                groups_item = groups_item_data.to_dict()
+
+                groups.append(groups_item)
+
         log_name = self.log_name
+        redact = self.redact
+        region = self.region
         type: Union[Unset, str] = UNSET
         if not isinstance(self.type, Unset):
             type = self.type.value
@@ -43,8 +67,14 @@ class LogExportClusterSpecification:
         field_dict.update({})
         if auth_principal is not UNSET:
             field_dict["auth_principal"] = auth_principal
+        if groups is not UNSET:
+            field_dict["groups"] = groups
         if log_name is not UNSET:
             field_dict["log_name"] = log_name
+        if redact is not UNSET:
+            field_dict["redact"] = redact
+        if region is not UNSET:
+            field_dict["region"] = region
         if type is not UNSET:
             field_dict["type"] = type
 
@@ -55,7 +85,18 @@ class LogExportClusterSpecification:
         d = src_dict.copy()
         auth_principal = d.pop("auth_principal", UNSET)
 
+        groups = []
+        _groups = d.pop("groups", UNSET)
+        for groups_item_data in _groups or []:
+            groups_item = LogExportGroup.from_dict(groups_item_data)
+
+            groups.append(groups_item)
+
         log_name = d.pop("log_name", UNSET)
+
+        redact = d.pop("redact", UNSET)
+
+        region = d.pop("region", UNSET)
 
         _type = d.pop("type", UNSET)
         type: Union[Unset, LogExportType]
@@ -68,7 +109,10 @@ class LogExportClusterSpecification:
 
         log_export_cluster_specification = cls(
             auth_principal=auth_principal,
+            groups=groups,
             log_name=log_name,
+            redact=redact,
+            region=region,
             type=type,
         )
 

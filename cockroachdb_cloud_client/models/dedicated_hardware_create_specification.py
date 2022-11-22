@@ -13,9 +13,9 @@ class DedicatedHardwareCreateSpecification:
     """
     Attributes:
         machine_spec (DedicatedMachineTypeSpecification):
-        storage_gib (int): StorageGiB is the number of storage GiB per node in the cluster.
+        storage_gib (int): storage_gib is the number of storage GiB per node in the cluster.
             Zero indicates default to the lowest storage GiB available given machine specs.
-        disk_iops (Union[Unset, int]): DiskIOPs is the number of disk I/O operations per second that are
+        disk_iops (Union[Unset, int]): disk_iops is the number of disk I/O operations per second that are
             permitted on each node in the cluster. Zero indicates the cloud
             provider-specific default. Only available for AWS clusters.
     """

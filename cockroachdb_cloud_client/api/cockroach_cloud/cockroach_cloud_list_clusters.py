@@ -95,7 +95,7 @@ def sync_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListClustersPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListClustersResponse]]:
-    """List clusters owned by an organization.
+    """List clusters owned by an organization
 
      Sort order: Cluster name
 
@@ -136,7 +136,7 @@ def sync(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListClustersPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListClustersResponse]]:
-    """List clusters owned by an organization.
+    """List clusters owned by an organization
 
      Sort order: Cluster name
 
@@ -170,7 +170,7 @@ async def asyncio_detailed(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListClustersPaginationSortOrder] = UNSET,
 ) -> Response[Union[Any, ListClustersResponse]]:
-    """List clusters owned by an organization.
+    """List clusters owned by an organization
 
      Sort order: Cluster name
 
@@ -209,7 +209,7 @@ async def asyncio(
     pagination_as_of_time: Union[Unset, None, datetime.datetime] = UNSET,
     pagination_sort_order: Union[Unset, None, CockroachCloudListClustersPaginationSortOrder] = UNSET,
 ) -> Optional[Union[Any, ListClustersResponse]]:
-    """List clusters owned by an organization.
+    """List clusters owned by an organization
 
      Sort order: Cluster name
 

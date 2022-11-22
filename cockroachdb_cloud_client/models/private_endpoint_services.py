@@ -11,7 +11,7 @@ T = TypeVar("T", bound="PrivateEndpointServices")
 class PrivateEndpointServices:
     """
     Attributes:
-        services (List[PrivateEndpointService]): Services contains a list of all cluster related services.
+        services (List[PrivateEndpointService]): services contains a list of all cluster related services.
     """
 
     services: List[PrivateEndpointService]

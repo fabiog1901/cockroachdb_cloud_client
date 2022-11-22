@@ -16,8 +16,10 @@ class CMEKRegionSpecification:
         Attributes:
             key_spec (Union[Unset, CMEKKeySpecification]): CMEKKeySpecification contains all the details necessary to use a
                 customer-provided
-                encryption key. This involves the type/location of the key and the principal
-                to authenticate as when accessing it.
+                encryption key.
+
+                This involves the type/location of the key and the principal to authenticate as
+                when accessing it.
             region (Union[Unset, str]):
     """
 

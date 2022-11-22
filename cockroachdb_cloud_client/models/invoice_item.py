@@ -20,8 +20,8 @@ class InvoiceItem:
             'CLUSTER_STATUS_UNSPECIFIED', 'plan': 'SERVERLESS', 'regions': [{'name': 'us-central1', 'node_count': 0,
             'sql_dns': 'free-tier7.gcp-us-central1.crdb.io', 'ui_dns': ''}], 'state': 'CREATED', 'updated_at':
             '2022-03-22T20:23:11.879593Z'}.
-        line_items (List[LineItem]): LineItems contain all the relevant line items from the Metronome invoice.
-        totals (List[CurrencyAmount]): Totals is a list of the total amounts of line items per currency.
+        line_items (List[LineItem]): line_items contain all the relevant line items from the Metronome invoice.
+        totals (List[CurrencyAmount]): totals is a list of the total amounts of line items per currency.
     """
 
     cluster: Cluster

@@ -65,7 +65,7 @@ def sync_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, SQLUser]]:
-    """Delete a SQL user.
+    """Delete a SQL user
 
     Args:
         cluster_id (str):
@@ -95,7 +95,7 @@ def sync(
     *,
     client: Client,
 ) -> Optional[Union[Any, SQLUser]]:
-    """Delete a SQL user.
+    """Delete a SQL user
 
     Args:
         cluster_id (str):
@@ -118,7 +118,7 @@ async def asyncio_detailed(
     *,
     client: Client,
 ) -> Response[Union[Any, SQLUser]]:
-    """Delete a SQL user.
+    """Delete a SQL user
 
     Args:
         cluster_id (str):
@@ -146,7 +146,7 @@ async def asyncio(
     *,
     client: Client,
 ) -> Optional[Union[Any, SQLUser]]:
-    """Delete a SQL user.
+    """Delete a SQL user
 
     Args:
         cluster_id (str):

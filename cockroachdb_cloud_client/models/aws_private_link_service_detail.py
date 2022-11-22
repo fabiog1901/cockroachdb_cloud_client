@@ -9,12 +9,12 @@ T = TypeVar("T", bound="AWSPrivateLinkServiceDetail")
 class AWSPrivateLinkServiceDetail:
     """
     Attributes:
-        availability_zone_ids (List[str]): AvailabilityZoneIDs are the identifiers for the availability zones that the
-            service
-            is available in.
-        service_id (str): ServiceID is the server side of the PrivateLink
+        availability_zone_ids (List[str]): availability_zone_ids are the identifiers for the availability zones
+            that the service is available in.
+        service_id (str): service_id is the server side of the PrivateLink
             connection. This is the same as AWSPrivateLinkEndpoint.service_id.
-        service_name (str): ServiceName is the AWS service name customers use to create endpoints on their end.
+        service_name (str): service_name is the AWS service name customers use to create endpoints
+            on their end.
     """
 
     availability_zone_ids: List[str]
