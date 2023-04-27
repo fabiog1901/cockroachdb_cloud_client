@@ -105,7 +105,8 @@ class LogExportClusterSpecification:
 
         _type = d.pop("type", UNSET)
         type: Union[Unset, LogExportType]
-        if isinstance(_type, Unset):
+
+        if isinstance(_type, Unset) or not _type:
             type = UNSET
         else:
             type = LogExportType(_type)

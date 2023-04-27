@@ -71,7 +71,8 @@ class CloudWatchMetricExportInfo:
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, MetricExportStatusType]
-        if isinstance(_status, Unset):
+
+        if isinstance(_status, Unset) or not _status:
             status = UNSET
         else:
             status = MetricExportStatusType(_status)

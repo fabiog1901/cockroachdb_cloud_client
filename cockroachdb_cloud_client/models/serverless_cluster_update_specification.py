@@ -50,7 +50,8 @@ class ServerlessClusterUpdateSpecification:
 
         _usage_limits = d.pop("usage_limits", UNSET)
         usage_limits: Union[Unset, UsageLimits]
-        if isinstance(_usage_limits, Unset):
+
+        if isinstance(_usage_limits, Unset) or not _usage_limits:
             usage_limits = UNSET
         else:
             usage_limits = UsageLimits.from_dict(_usage_limits)

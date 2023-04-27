@@ -77,21 +77,24 @@ class UpdateClusterSpecification:
         d = src_dict.copy()
         _dedicated = d.pop("dedicated", UNSET)
         dedicated: Union[Unset, DedicatedClusterUpdateSpecification]
-        if isinstance(_dedicated, Unset):
+
+        if isinstance(_dedicated, Unset) or not _dedicated:
             dedicated = UNSET
         else:
             dedicated = DedicatedClusterUpdateSpecification.from_dict(_dedicated)
 
         _serverless = d.pop("serverless", UNSET)
         serverless: Union[Unset, ServerlessClusterUpdateSpecification]
-        if isinstance(_serverless, Unset):
+
+        if isinstance(_serverless, Unset) or not _serverless:
             serverless = UNSET
         else:
             serverless = ServerlessClusterUpdateSpecification.from_dict(_serverless)
 
         _upgrade_status = d.pop("upgrade_status", UNSET)
         upgrade_status: Union[Unset, ClusterUpgradeStatusType]
-        if isinstance(_upgrade_status, Unset):
+
+        if isinstance(_upgrade_status, Unset) or not _upgrade_status:
             upgrade_status = UNSET
         else:
             upgrade_status = ClusterUpgradeStatusType(_upgrade_status)

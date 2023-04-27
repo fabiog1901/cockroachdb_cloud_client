@@ -48,7 +48,8 @@ class ClientCACertInfo:
         d = src_dict.copy()
         _status = d.pop("status", UNSET)
         status: Union[Unset, ClientCACertStatus]
-        if isinstance(_status, Unset):
+
+        if isinstance(_status, Unset) or not _status:
             status = UNSET
         else:
             status = ClientCACertStatus(_status)

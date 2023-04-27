@@ -84,7 +84,8 @@ class DedicatedClusterCreateSpecification:
 
         _network_visibility = d.pop("network_visibility", UNSET)
         network_visibility: Union[Unset, NetworkVisibilityType]
-        if isinstance(_network_visibility, Unset):
+
+        if isinstance(_network_visibility, Unset) or not _network_visibility:
             network_visibility = UNSET
         else:
             network_visibility = NetworkVisibilityType(_network_visibility)

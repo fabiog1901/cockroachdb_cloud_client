@@ -50,7 +50,8 @@ class GetConnectionStringResponse:
 
         _params = d.pop("params", UNSET)
         params: Union[Unset, GetConnectionStringResponseParams]
-        if isinstance(_params, Unset):
+
+        if isinstance(_params, Unset) or not _params:
             params = UNSET
         else:
             params = GetConnectionStringResponseParams.from_dict(_params)

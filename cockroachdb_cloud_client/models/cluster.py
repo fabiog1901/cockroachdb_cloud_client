@@ -212,28 +212,32 @@ class Cluster:
 
         _created_at = d.pop("created_at", UNSET)
         created_at: Union[Unset, datetime.datetime]
-        if isinstance(_created_at, Unset):
+
+        if isinstance(_created_at, Unset) or not _created_at:
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _deleted_at = d.pop("deleted_at", UNSET)
         deleted_at: Union[Unset, datetime.datetime]
-        if isinstance(_deleted_at, Unset):
+
+        if isinstance(_deleted_at, Unset) or not _deleted_at:
             deleted_at = UNSET
         else:
             deleted_at = isoparse(_deleted_at)
 
         _egress_traffic_policy = d.pop("egress_traffic_policy", UNSET)
         egress_traffic_policy: Union[Unset, EgressTrafficPolicyType]
-        if isinstance(_egress_traffic_policy, Unset):
+
+        if isinstance(_egress_traffic_policy, Unset) or not _egress_traffic_policy:
             egress_traffic_policy = UNSET
         else:
             egress_traffic_policy = EgressTrafficPolicyType(_egress_traffic_policy)
 
         _network_visibility = d.pop("network_visibility", UNSET)
         network_visibility: Union[Unset, NetworkVisibilityType]
-        if isinstance(_network_visibility, Unset):
+
+        if isinstance(_network_visibility, Unset) or not _network_visibility:
             network_visibility = UNSET
         else:
             network_visibility = NetworkVisibilityType(_network_visibility)
@@ -242,7 +246,8 @@ class Cluster:
 
         _updated_at = d.pop("updated_at", UNSET)
         updated_at: Union[Unset, datetime.datetime]
-        if isinstance(_updated_at, Unset):
+
+        if isinstance(_updated_at, Unset) or not _updated_at:
             updated_at = UNSET
         else:
             updated_at = isoparse(_updated_at)

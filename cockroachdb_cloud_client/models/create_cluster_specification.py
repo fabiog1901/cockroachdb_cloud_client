@@ -51,14 +51,16 @@ class CreateClusterSpecification:
         d = src_dict.copy()
         _dedicated = d.pop("dedicated", UNSET)
         dedicated: Union[Unset, DedicatedClusterCreateSpecification]
-        if isinstance(_dedicated, Unset):
+
+        if isinstance(_dedicated, Unset) or not _dedicated:
             dedicated = UNSET
         else:
             dedicated = DedicatedClusterCreateSpecification.from_dict(_dedicated)
 
         _serverless = d.pop("serverless", UNSET)
         serverless: Union[Unset, ServerlessClusterCreateSpecification]
-        if isinstance(_serverless, Unset):
+
+        if isinstance(_serverless, Unset) or not _serverless:
             serverless = UNSET
         else:
             serverless = ServerlessClusterCreateSpecification.from_dict(_serverless)

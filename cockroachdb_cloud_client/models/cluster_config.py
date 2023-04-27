@@ -51,14 +51,16 @@ class ClusterConfig:
         d = src_dict.copy()
         _dedicated = d.pop("dedicated", UNSET)
         dedicated: Union[Unset, DedicatedHardwareConfig]
-        if isinstance(_dedicated, Unset):
+
+        if isinstance(_dedicated, Unset) or not _dedicated:
             dedicated = UNSET
         else:
             dedicated = DedicatedHardwareConfig.from_dict(_dedicated)
 
         _serverless = d.pop("serverless", UNSET)
         serverless: Union[Unset, ServerlessClusterConfig]
-        if isinstance(_serverless, Unset):
+
+        if isinstance(_serverless, Unset) or not _serverless:
             serverless = UNSET
         else:
             serverless = ServerlessClusterConfig.from_dict(_serverless)

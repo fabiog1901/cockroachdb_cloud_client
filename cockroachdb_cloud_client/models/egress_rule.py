@@ -111,7 +111,8 @@ class EgressRule:
 
         _created_at = d.pop("created_at", UNSET)
         created_at: Union[Unset, datetime.datetime]
-        if isinstance(_created_at, Unset):
+
+        if isinstance(_created_at, Unset) or not _created_at:
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)

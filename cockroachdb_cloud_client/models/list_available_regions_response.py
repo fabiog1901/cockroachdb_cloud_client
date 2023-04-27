@@ -62,7 +62,8 @@ class ListAvailableRegionsResponse:
 
         _pagination = d.pop("pagination", UNSET)
         pagination: Union[Unset, KeysetPaginationResponse]
-        if isinstance(_pagination, Unset):
+
+        if isinstance(_pagination, Unset) or not _pagination:
             pagination = UNSET
         else:
             pagination = KeysetPaginationResponse.from_dict(_pagination)

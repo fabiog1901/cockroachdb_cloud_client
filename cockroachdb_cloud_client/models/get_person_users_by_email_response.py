@@ -45,7 +45,8 @@ class GetPersonUsersByEmailResponse:
         d = src_dict.copy()
         _user = d.pop("user", UNSET)
         user: Union[Unset, PersonUserInfoContainsInformationAboutAPerson]
-        if isinstance(_user, Unset):
+
+        if isinstance(_user, Unset) or not _user:
             user = UNSET
         else:
             user = PersonUserInfoContainsInformationAboutAPerson.from_dict(_user)

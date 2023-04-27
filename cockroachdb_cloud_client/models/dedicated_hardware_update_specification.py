@@ -56,7 +56,8 @@ class DedicatedHardwareUpdateSpecification:
 
         _machine_spec = d.pop("machine_spec", UNSET)
         machine_spec: Union[Unset, DedicatedMachineTypeSpecification]
-        if isinstance(_machine_spec, Unset):
+
+        if isinstance(_machine_spec, Unset) or not _machine_spec:
             machine_spec = UNSET
         else:
             machine_spec = DedicatedMachineTypeSpecification.from_dict(_machine_spec)

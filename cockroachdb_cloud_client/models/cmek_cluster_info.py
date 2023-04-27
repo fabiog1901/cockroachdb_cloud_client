@@ -90,7 +90,8 @@ class CMEKClusterInfo:
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, CMEKStatus]
-        if isinstance(_status, Unset):
+
+        if isinstance(_status, Unset) or not _status:
             status = UNSET
         else:
             status = CMEKStatus(_status)

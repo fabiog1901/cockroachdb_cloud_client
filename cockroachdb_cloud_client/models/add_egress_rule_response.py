@@ -42,7 +42,8 @@ class AddEgressRuleResponse:
         d = src_dict.copy()
         _rule = d.pop("Rule", UNSET)
         rule: Union[Unset, EgressRule]
-        if isinstance(_rule, Unset):
+
+        if isinstance(_rule, Unset) or not _rule:
             rule = UNSET
         else:
             rule = EgressRule.from_dict(_rule)

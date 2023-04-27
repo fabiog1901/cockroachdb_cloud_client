@@ -108,28 +108,32 @@ class CMEKKeyInfo:
         d = src_dict.copy()
         _created_at = d.pop("created_at", UNSET)
         created_at: Union[Unset, datetime.datetime]
-        if isinstance(_created_at, Unset):
+
+        if isinstance(_created_at, Unset) or not _created_at:
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _spec = d.pop("spec", UNSET)
         spec: Union[Unset, CMEKKeySpecification]
-        if isinstance(_spec, Unset):
+
+        if isinstance(_spec, Unset) or not _spec:
             spec = UNSET
         else:
             spec = CMEKKeySpecification.from_dict(_spec)
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, CMEKStatus]
-        if isinstance(_status, Unset):
+
+        if isinstance(_status, Unset) or not _status:
             status = UNSET
         else:
             status = CMEKStatus(_status)
 
         _updated_at = d.pop("updated_at", UNSET)
         updated_at: Union[Unset, datetime.datetime]
-        if isinstance(_updated_at, Unset):
+
+        if isinstance(_updated_at, Unset) or not _updated_at:
             updated_at = UNSET
         else:
             updated_at = isoparse(_updated_at)

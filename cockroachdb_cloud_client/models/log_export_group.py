@@ -72,7 +72,8 @@ class LogExportGroup:
 
         _min_level = d.pop("min_level", UNSET)
         min_level: Union[Unset, LogLevelType]
-        if isinstance(_min_level, Unset):
+
+        if isinstance(_min_level, Unset) or not _min_level:
             min_level = UNSET
         else:
             min_level = LogLevelType(_min_level)
