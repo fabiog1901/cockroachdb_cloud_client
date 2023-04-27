@@ -1,9 +1,12 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.any_ import Any
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.any_ import Any
+
 
 T = TypeVar("T", bound="Status")
 
@@ -13,16 +16,18 @@ class Status:
     """
     Attributes:
         code (Union[Unset, int]):
-        details (Union[Unset, List[Any]]):
+        details (Union[Unset, List['Any']]):
         message (Union[Unset, str]):
     """
 
     code: Union[Unset, int] = UNSET
-    details: Union[Unset, List[Any]] = UNSET
+    details: Union[Unset, List["Any"]] = UNSET
     message: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        from ..models.any_ import Any
+
         code = self.code
         details: Union[Unset, List[Dict[str, Any]]] = UNSET
         if not isinstance(self.details, Unset):
@@ -48,6 +53,8 @@ class Status:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.any_ import Any
+
         d = src_dict.copy()
         code = d.pop("code", UNSET)
 

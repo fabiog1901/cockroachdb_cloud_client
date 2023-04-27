@@ -1,11 +1,16 @@
 import datetime
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 from dateutil.parser import isoparse
 
-from ..models.currency_amount import CurrencyAmount
-from ..models.invoice_item import InvoiceItem
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.currency_amount import CurrencyAmount
+    from ..models.invoice_adjustment import InvoiceAdjustment
+    from ..models.invoice_item import InvoiceItem
+
 
 T = TypeVar("T", bound="Invoice")
 
@@ -19,20 +24,25 @@ class Invoice:
     The message also includes details about each invoice item.
 
         Attributes:
-            balances (List[CurrencyAmount]): balances are the amounts of currency left at the time of the invoice.
+            balances (List['CurrencyAmount']): balances are the amounts of currency left at the time of the invoice.
             invoice_id (str): invoice_id is the unique ID representing the invoice.
-            invoice_items (List[InvoiceItem]): invoice_items are sorted by the cluster name.
+            invoice_items (List['InvoiceItem']): invoice_items are sorted by the cluster name.
             period_end (datetime.datetime): period_end is the end of the billing period (exclusive).
             period_start (datetime.datetime): period_start is the start of the billing period (inclusive).
-            totals (List[CurrencyAmount]): totals is a list of the total amounts per currency.
+            totals (List['CurrencyAmount']): totals is a list of the total amounts per currency.
+            adjustments (Union[Unset, List['InvoiceAdjustment']]): adjustments is a list of credits or costs that adjust the
+                value of the
+                invoice (e.g. a Serverless Free Credit or Premium Support adjustment).
+                Unlike line items, adjustments are not tied to a particular cluster.
     """
 
-    balances: List[CurrencyAmount]
+    balances: List["CurrencyAmount"]
     invoice_id: str
-    invoice_items: List[InvoiceItem]
+    invoice_items: List["InvoiceItem"]
     period_end: datetime.datetime
     period_start: datetime.datetime
-    totals: List[CurrencyAmount]
+    totals: List["CurrencyAmount"]
+    adjustments: Union[Unset, List["InvoiceAdjustment"]] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -59,6 +69,14 @@ class Invoice:
 
             totals.append(totals_item)
 
+        adjustments: Union[Unset, List[Dict[str, Any]]] = UNSET
+        if not isinstance(self.adjustments, Unset):
+            adjustments = []
+            for adjustments_item_data in self.adjustments:
+                adjustments_item = adjustments_item_data.to_dict()
+
+                adjustments.append(adjustments_item)
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -71,11 +89,17 @@ class Invoice:
                 "totals": totals,
             }
         )
+        if adjustments is not UNSET:
+            field_dict["adjustments"] = adjustments
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.currency_amount import CurrencyAmount
+        from ..models.invoice_adjustment import InvoiceAdjustment
+        from ..models.invoice_item import InvoiceItem
+
         d = src_dict.copy()
         balances = []
         _balances = d.pop("balances")
@@ -104,6 +128,13 @@ class Invoice:
 
             totals.append(totals_item)
 
+        adjustments = []
+        _adjustments = d.pop("adjustments", UNSET)
+        for adjustments_item_data in _adjustments or []:
+            adjustments_item = InvoiceAdjustment.from_dict(adjustments_item_data)
+
+            adjustments.append(adjustments_item)
+
         invoice = cls(
             balances=balances,
             invoice_id=invoice_id,
@@ -111,6 +142,7 @@ class Invoice:
             period_end=period_end,
             period_start=period_start,
             totals=totals,
+            adjustments=adjustments,
         )
 
         invoice.additional_properties = d

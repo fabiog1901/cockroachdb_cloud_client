@@ -1,9 +1,12 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.cmek_key_specification import CMEKKeySpecification
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.cmek_key_specification import CMEKKeySpecification
+
 
 T = TypeVar("T", bound="CMEKRegionSpecification")
 
@@ -23,7 +26,7 @@ class CMEKRegionSpecification:
             region (Union[Unset, str]):
     """
 
-    key_spec: Union[Unset, CMEKKeySpecification] = UNSET
+    key_spec: Union[Unset, "CMEKKeySpecification"] = UNSET
     region: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -46,12 +49,12 @@ class CMEKRegionSpecification:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.cmek_key_specification import CMEKKeySpecification
+
         d = src_dict.copy()
         _key_spec = d.pop("key_spec", UNSET)
         key_spec: Union[Unset, CMEKKeySpecification]
-        if _key_spec is None:
-            key_spec = None
-        elif isinstance(_key_spec, Unset):
+        if isinstance(_key_spec, Unset):
             key_spec = UNSET
         else:
             key_spec = CMEKKeySpecification.from_dict(_key_spec)

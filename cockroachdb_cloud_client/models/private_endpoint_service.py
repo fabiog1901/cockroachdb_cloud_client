@@ -1,10 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.api_cloud_provider import ApiCloudProvider
-from ..models.aws_private_link_service_detail import AWSPrivateLinkServiceDetail
-from ..models.private_endpoints import PrivateEndpoints
+from ..models.cloud_provider_type import CloudProviderType
+from ..models.private_endpoint_service_status_type import PrivateEndpointServiceStatusType
+
+if TYPE_CHECKING:
+    from ..models.aws_private_link_service_detail import AWSPrivateLinkServiceDetail
+
 
 T = TypeVar("T", bound="PrivateEndpointService")
 
@@ -14,18 +17,16 @@ class PrivateEndpointService:
     """
     Attributes:
         aws (AWSPrivateLinkServiceDetail):
-        cloud_provider (ApiCloudProvider):  - GCP: The Google Cloud Platform cloud provider.
+        cloud_provider (CloudProviderType):  - GCP: The Google Cloud Platform cloud provider.
              - AWS: The Amazon Web Services cloud provider.
         region_name (str): region_name is the cloud provider region name (i.e. us-east-1).
-        status (PrivateEndpoints): - ENDPOINT_SERVICE_STATUS_DELETE_FAILED: One note is that if the service is deleted,
-            there is no longer
-            a record, hence there is no "DELETED" status.
+        status (PrivateEndpointServiceStatusType):
     """
 
-    aws: AWSPrivateLinkServiceDetail
-    cloud_provider: ApiCloudProvider
+    aws: "AWSPrivateLinkServiceDetail"
+    cloud_provider: CloudProviderType
     region_name: str
-    status: PrivateEndpoints
+    status: PrivateEndpointServiceStatusType
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -51,14 +52,16 @@ class PrivateEndpointService:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.aws_private_link_service_detail import AWSPrivateLinkServiceDetail
+
         d = src_dict.copy()
         aws = AWSPrivateLinkServiceDetail.from_dict(d.pop("aws"))
 
-        cloud_provider = ApiCloudProvider(d.pop("cloud_provider"))
+        cloud_provider = CloudProviderType(d.pop("cloud_provider"))
 
         region_name = d.pop("region_name")
 
-        status = PrivateEndpoints(d.pop("status"))
+        status = PrivateEndpointServiceStatusType(d.pop("status"))
 
         private_endpoint_service = cls(
             aws=aws,

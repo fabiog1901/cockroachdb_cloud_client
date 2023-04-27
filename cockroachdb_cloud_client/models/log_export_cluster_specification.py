@@ -1,10 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.log_export_group import LogExportGroup
 from ..models.log_export_type import LogExportType
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.log_export_group import LogExportGroup
+
 
 T = TypeVar("T", bound="LogExportClusterSpecification")
 
@@ -21,7 +24,7 @@ class LogExportClusterSpecification:
                 that the cluster account can assume to write to CloudWatch or the
                 GCP Project ID that the cluster service account has permissions to
                 write to for cloud logging.
-            groups (Union[Unset, List[LogExportGroup]]): groups is a collection of log group configurations to customize
+            groups (Union[Unset, List['LogExportGroup']]): groups is a collection of log group configurations to customize
                 which CRDB channels get aggregated into different groups at the
                 target sink. Unconfigured channels will be sent to the default
                 locations via the settings above.
@@ -38,7 +41,7 @@ class LogExportClusterSpecification:
     """
 
     auth_principal: Union[Unset, str] = UNSET
-    groups: Union[Unset, List[LogExportGroup]] = UNSET
+    groups: Union[Unset, List["LogExportGroup"]] = UNSET
     log_name: Union[Unset, str] = UNSET
     redact: Union[Unset, bool] = UNSET
     region: Union[Unset, str] = UNSET
@@ -82,6 +85,8 @@ class LogExportClusterSpecification:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.log_export_group import LogExportGroup
+
         d = src_dict.copy()
         auth_principal = d.pop("auth_principal", UNSET)
 
@@ -100,9 +105,7 @@ class LogExportClusterSpecification:
 
         _type = d.pop("type", UNSET)
         type: Union[Unset, LogExportType]
-        if _type is None:
-            type = None
-        elif isinstance(_type, Unset):
+        if isinstance(_type, Unset):
             type = UNSET
         else:
             type = LogExportType(_type)

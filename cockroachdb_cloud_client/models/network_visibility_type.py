@@ -1,9 +1,9 @@
 from enum import Enum
 
 
-class ApiCloudProvider(str, Enum):
-    GCP = "GCP"
-    AWS = "AWS"
+class NetworkVisibilityType(str, Enum):
+    PRIVATE = "PRIVATE"
+    PUBLIC = "PUBLIC"
 
     def __str__(self) -> str:
         return str(self.value)

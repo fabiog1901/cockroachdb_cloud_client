@@ -1,10 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.allowlist_entry import AllowlistEntry
-from ..models.keyset_pagination_response import KeysetPaginationResponse
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.allowlist_entry import AllowlistEntry
+    from ..models.keyset_pagination_response import KeysetPaginationResponse
+
 
 T = TypeVar("T", bound="ListAllowlistEntriesResponse")
 
@@ -13,14 +16,14 @@ T = TypeVar("T", bound="ListAllowlistEntriesResponse")
 class ListAllowlistEntriesResponse:
     """
     Attributes:
-        allowlist (List[AllowlistEntry]):
+        allowlist (List['AllowlistEntry']):
         propagating (bool):
         pagination (Union[Unset, KeysetPaginationResponse]):
     """
 
-    allowlist: List[AllowlistEntry]
+    allowlist: List["AllowlistEntry"]
     propagating: bool
-    pagination: Union[Unset, KeysetPaginationResponse] = UNSET
+    pagination: Union[Unset, "KeysetPaginationResponse"] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -50,6 +53,9 @@ class ListAllowlistEntriesResponse:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.allowlist_entry import AllowlistEntry
+        from ..models.keyset_pagination_response import KeysetPaginationResponse
+
         d = src_dict.copy()
         allowlist = []
         _allowlist = d.pop("allowlist")
@@ -62,9 +68,7 @@ class ListAllowlistEntriesResponse:
 
         _pagination = d.pop("pagination", UNSET)
         pagination: Union[Unset, KeysetPaginationResponse]
-        if _pagination is None:
-            pagination = None
-        elif isinstance(_pagination, Unset):
+        if isinstance(_pagination, Unset):
             pagination = UNSET
         else:
             pagination = KeysetPaginationResponse.from_dict(_pagination)

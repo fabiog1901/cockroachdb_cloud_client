@@ -1,8 +1,10 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.private_endpoint_service import PrivateEndpointService
+if TYPE_CHECKING:
+    from ..models.private_endpoint_service import PrivateEndpointService
+
 
 T = TypeVar("T", bound="PrivateEndpointServices")
 
@@ -11,10 +13,10 @@ T = TypeVar("T", bound="PrivateEndpointServices")
 class PrivateEndpointServices:
     """
     Attributes:
-        services (List[PrivateEndpointService]): services contains a list of all cluster related services.
+        services (List['PrivateEndpointService']): services contains a list of all cluster related services.
     """
 
-    services: List[PrivateEndpointService]
+    services: List["PrivateEndpointService"]
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -36,6 +38,8 @@ class PrivateEndpointServices:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.private_endpoint_service import PrivateEndpointService
+
         d = src_dict.copy()
         services = []
         _services = d.pop("services")

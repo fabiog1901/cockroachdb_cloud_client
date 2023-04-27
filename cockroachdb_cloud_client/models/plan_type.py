@@ -1,9 +1,9 @@
 from enum import Enum
 
 
-class Plan(str, Enum):
-    DEDICATED = "DEDICATED"
+class PlanType(str, Enum):
     CUSTOM = "CUSTOM"
+    DEDICATED = "DEDICATED"
     SERVERLESS = "SERVERLESS"
 
     def __str__(self) -> str:

@@ -1,10 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.egress_rule import EgressRule
-from ..models.keyset_pagination_response import KeysetPaginationResponse
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.egress_rule import EgressRule
+    from ..models.keyset_pagination_response import KeysetPaginationResponse
+
 
 T = TypeVar("T", bound="ListEgressRulesResponse")
 
@@ -15,12 +18,12 @@ class ListEgressRulesResponse:
 
     Attributes:
         pagination (Union[Unset, KeysetPaginationResponse]):
-        rules (Union[Unset, List[EgressRule]]): rules are the egress rules associated with the given CockroachDB
+        rules (Union[Unset, List['EgressRule']]): rules are the egress rules associated with the given CockroachDB
             cluster.
     """
 
-    pagination: Union[Unset, KeysetPaginationResponse] = UNSET
-    rules: Union[Unset, List[EgressRule]] = UNSET
+    pagination: Union[Unset, "KeysetPaginationResponse"] = UNSET
+    rules: Union[Unset, List["EgressRule"]] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -48,12 +51,13 @@ class ListEgressRulesResponse:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.egress_rule import EgressRule
+        from ..models.keyset_pagination_response import KeysetPaginationResponse
+
         d = src_dict.copy()
         _pagination = d.pop("pagination", UNSET)
         pagination: Union[Unset, KeysetPaginationResponse]
-        if _pagination is None:
-            pagination = None
-        elif isinstance(_pagination, Unset):
+        if isinstance(_pagination, Unset):
             pagination = UNSET
         else:
             pagination = KeysetPaginationResponse.from_dict(_pagination)

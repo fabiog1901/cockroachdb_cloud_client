@@ -1,9 +1,12 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.egress_rule import EgressRule
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.egress_rule import EgressRule
+
 
 T = TypeVar("T", bound="AddEgressRuleResponse")
 
@@ -16,7 +19,7 @@ class AddEgressRuleResponse:
         rule (Union[Unset, EgressRule]): EgressRule represents a network egress rule.
     """
 
-    rule: Union[Unset, EgressRule] = UNSET
+    rule: Union[Unset, "EgressRule"] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -34,12 +37,12 @@ class AddEgressRuleResponse:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.egress_rule import EgressRule
+
         d = src_dict.copy()
         _rule = d.pop("Rule", UNSET)
         rule: Union[Unset, EgressRule]
-        if _rule is None:
-            rule = None
-        elif isinstance(_rule, Unset):
+        if isinstance(_rule, Unset):
             rule = UNSET
         else:
             rule = EgressRule.from_dict(_rule)

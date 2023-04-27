@@ -1,10 +1,12 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.cluster import Cluster
-from ..models.currency_amount import CurrencyAmount
-from ..models.line_item import LineItem
+if TYPE_CHECKING:
+    from ..models.cluster import Cluster
+    from ..models.currency_amount import CurrencyAmount
+    from ..models.line_item import LineItem
+
 
 T = TypeVar("T", bound="InvoiceItem")
 
@@ -19,14 +21,14 @@ class InvoiceItem:
             '35c4abb2-bb66-46d7-afed-25ebef5ed2aa', 'name': 'example-cluster', 'operation_status':
             'CLUSTER_STATUS_UNSPECIFIED', 'plan': 'SERVERLESS', 'regions': [{'name': 'us-central1', 'node_count': 0,
             'sql_dns': 'free-tier7.gcp-us-central1.crdb.io', 'ui_dns': ''}], 'state': 'CREATED', 'updated_at':
-            '2022-03-22T20:23:11.879593Z'}.
-        line_items (List[LineItem]): line_items contain all the relevant line items from the Metronome invoice.
-        totals (List[CurrencyAmount]): totals is a list of the total amounts of line items per currency.
+            '2022-03-22T20:23:11.879593Z', 'upgrade_status': 'USING_LATEST'}.
+        line_items (List['LineItem']): line_items contain all the relevant line items from the Metronome invoice.
+        totals (List['CurrencyAmount']): totals is a list of the total amounts of line items per currency.
     """
 
-    cluster: Cluster
-    line_items: List[LineItem]
-    totals: List[CurrencyAmount]
+    cluster: "Cluster"
+    line_items: List["LineItem"]
+    totals: List["CurrencyAmount"]
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -58,6 +60,10 @@ class InvoiceItem:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.cluster import Cluster
+        from ..models.currency_amount import CurrencyAmount
+        from ..models.line_item import LineItem
+
         d = src_dict.copy()
         cluster = Cluster.from_dict(d.pop("cluster"))
 

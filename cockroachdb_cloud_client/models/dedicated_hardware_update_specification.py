@@ -1,9 +1,12 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.dedicated_machine_type_specification import DedicatedMachineTypeSpecification
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.dedicated_machine_type_specification import DedicatedMachineTypeSpecification
+
 
 T = TypeVar("T", bound="DedicatedHardwareUpdateSpecification")
 
@@ -20,7 +23,7 @@ class DedicatedHardwareUpdateSpecification:
     """
 
     disk_iops: Union[Unset, int] = UNSET
-    machine_spec: Union[Unset, DedicatedMachineTypeSpecification] = UNSET
+    machine_spec: Union[Unset, "DedicatedMachineTypeSpecification"] = UNSET
     storage_gib: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -46,14 +49,14 @@ class DedicatedHardwareUpdateSpecification:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.dedicated_machine_type_specification import DedicatedMachineTypeSpecification
+
         d = src_dict.copy()
         disk_iops = d.pop("disk_iops", UNSET)
 
         _machine_spec = d.pop("machine_spec", UNSET)
         machine_spec: Union[Unset, DedicatedMachineTypeSpecification]
-        if _machine_spec is None:
-            machine_spec = None
-        elif isinstance(_machine_spec, Unset):
+        if isinstance(_machine_spec, Unset):
             machine_spec = UNSET
         else:
             machine_spec = DedicatedMachineTypeSpecification.from_dict(_machine_spec)

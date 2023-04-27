@@ -1,8 +1,10 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.invoice import Invoice
+if TYPE_CHECKING:
+    from ..models.invoice import Invoice
+
 
 T = TypeVar("T", bound="ListInvoicesResponse")
 
@@ -11,10 +13,10 @@ T = TypeVar("T", bound="ListInvoicesResponse")
 class ListInvoicesResponse:
     """
     Attributes:
-        invoices (List[Invoice]): invoices are sorted by period_start time.
+        invoices (List['Invoice']): invoices are sorted by period_start time.
     """
 
-    invoices: List[Invoice]
+    invoices: List["Invoice"]
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -36,6 +38,8 @@ class ListInvoicesResponse:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.invoice import Invoice
+
         d = src_dict.copy()
         invoices = []
         _invoices = d.pop("invoices")

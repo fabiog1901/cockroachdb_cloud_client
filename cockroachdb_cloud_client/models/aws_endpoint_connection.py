@@ -2,8 +2,8 @@ from typing import Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.api_cloud_provider import ApiCloudProvider
-from ..models.aws_endpoint_connection_status import AWSEndpointConnectionStatus
+from ..models.aws_endpoint_connection_status_type import AWSEndpointConnectionStatusType
+from ..models.cloud_provider_type import CloudProviderType
 
 T = TypeVar("T", bound="AwsEndpointConnection")
 
@@ -12,20 +12,20 @@ T = TypeVar("T", bound="AwsEndpointConnection")
 class AwsEndpointConnection:
     """
     Attributes:
-        cloud_provider (ApiCloudProvider):  - GCP: The Google Cloud Platform cloud provider.
+        cloud_provider (CloudProviderType):  - GCP: The Google Cloud Platform cloud provider.
              - AWS: The Amazon Web Services cloud provider.
         endpoint_id (str): endpoint_id is the client side of the PrivateLink connection.
         region_name (str): region_name is the cloud provider region name (i.e. us-east-1).
         service_id (str): service_id is the server side of the PrivateLink
             connection. This is the same as AWSPrivateLinkEndpoint.service_id.
-        status (AWSEndpointConnectionStatus): The statuses map to the statuses returned by the AWS API.
+        status (AWSEndpointConnectionStatusType):
     """
 
-    cloud_provider: ApiCloudProvider
+    cloud_provider: CloudProviderType
     endpoint_id: str
     region_name: str
     service_id: str
-    status: AWSEndpointConnectionStatus
+    status: AWSEndpointConnectionStatusType
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -53,7 +53,7 @@ class AwsEndpointConnection:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        cloud_provider = ApiCloudProvider(d.pop("cloud_provider"))
+        cloud_provider = CloudProviderType(d.pop("cloud_provider"))
 
         endpoint_id = d.pop("endpoint_id")
 
@@ -61,7 +61,7 @@ class AwsEndpointConnection:
 
         service_id = d.pop("service_id")
 
-        status = AWSEndpointConnectionStatus(d.pop("status"))
+        status = AWSEndpointConnectionStatusType(d.pop("status"))
 
         aws_endpoint_connection = cls(
             cloud_provider=cloud_provider,

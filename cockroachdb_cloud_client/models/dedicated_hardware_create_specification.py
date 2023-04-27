@@ -1,9 +1,12 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.dedicated_machine_type_specification import DedicatedMachineTypeSpecification
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.dedicated_machine_type_specification import DedicatedMachineTypeSpecification
+
 
 T = TypeVar("T", bound="DedicatedHardwareCreateSpecification")
 
@@ -20,7 +23,7 @@ class DedicatedHardwareCreateSpecification:
             provider-specific default. Only available for AWS clusters.
     """
 
-    machine_spec: DedicatedMachineTypeSpecification
+    machine_spec: "DedicatedMachineTypeSpecification"
     storage_gib: int
     disk_iops: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
@@ -46,6 +49,8 @@ class DedicatedHardwareCreateSpecification:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.dedicated_machine_type_specification import DedicatedMachineTypeSpecification
+
         d = src_dict.copy()
         machine_spec = DedicatedMachineTypeSpecification.from_dict(d.pop("machine_spec"))
 

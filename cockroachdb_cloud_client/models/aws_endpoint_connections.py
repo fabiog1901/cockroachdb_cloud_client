@@ -1,8 +1,10 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.aws_endpoint_connection import AwsEndpointConnection
+if TYPE_CHECKING:
+    from ..models.aws_endpoint_connection import AwsEndpointConnection
+
 
 T = TypeVar("T", bound="AwsEndpointConnections")
 
@@ -11,10 +13,10 @@ T = TypeVar("T", bound="AwsEndpointConnections")
 class AwsEndpointConnections:
     """
     Attributes:
-        connections (List[AwsEndpointConnection]): Connections is a list of private endpoints.
+        connections (List['AwsEndpointConnection']): Connections is a list of private endpoints.
     """
 
-    connections: List[AwsEndpointConnection]
+    connections: List["AwsEndpointConnection"]
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -36,6 +38,8 @@ class AwsEndpointConnections:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.aws_endpoint_connection import AwsEndpointConnection
+
         d = src_dict.copy()
         connections = []
         _connections = d.pop("connections")

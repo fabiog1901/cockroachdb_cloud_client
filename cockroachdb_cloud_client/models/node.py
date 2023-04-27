@@ -2,7 +2,7 @@ from typing import Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.node_status import NodeStatus
+from ..models.node_status_type import NodeStatusType
 
 T = TypeVar("T", bound="Node")
 
@@ -13,12 +13,12 @@ class Node:
     Attributes:
         name (str):
         region_name (str):
-        status (NodeStatus):
+        status (NodeStatusType):
     """
 
     name: str
     region_name: str
-    status: NodeStatus
+    status: NodeStatusType
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -45,7 +45,7 @@ class Node:
 
         region_name = d.pop("region_name")
 
-        status = NodeStatus(d.pop("status"))
+        status = NodeStatusType(d.pop("status"))
 
         node = cls(
             name=name,

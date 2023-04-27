@@ -1,12 +1,15 @@
 import datetime
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 from dateutil.parser import isoparse
 
-from ..models.cmek_key_specification import CMEKKeySpecification
 from ..models.cmek_status import CMEKStatus
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.cmek_key_specification import CMEKKeySpecification
+
 
 T = TypeVar("T", bound="CMEKKeyInfo")
 
@@ -57,7 +60,7 @@ class CMEKKeyInfo:
     """
 
     created_at: Union[Unset, datetime.datetime] = UNSET
-    spec: Union[Unset, CMEKKeySpecification] = UNSET
+    spec: Union[Unset, "CMEKKeySpecification"] = UNSET
     status: Union[Unset, CMEKStatus] = UNSET
     updated_at: Union[Unset, datetime.datetime] = UNSET
     user_message: Union[Unset, str] = UNSET
@@ -100,39 +103,33 @@ class CMEKKeyInfo:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.cmek_key_specification import CMEKKeySpecification
+
         d = src_dict.copy()
         _created_at = d.pop("created_at", UNSET)
         created_at: Union[Unset, datetime.datetime]
-        if _created_at is None:
-            created_at = None
-        elif isinstance(_created_at, Unset):
+        if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _spec = d.pop("spec", UNSET)
         spec: Union[Unset, CMEKKeySpecification]
-        if _spec is None:
-            spec = None
-        elif isinstance(_spec, Unset):
+        if isinstance(_spec, Unset):
             spec = UNSET
         else:
             spec = CMEKKeySpecification.from_dict(_spec)
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, CMEKStatus]
-        if _status is None:
-            status = None
-        elif isinstance(_status, Unset):
+        if isinstance(_status, Unset):
             status = UNSET
         else:
             status = CMEKStatus(_status)
 
         _updated_at = d.pop("updated_at", UNSET)
         updated_at: Union[Unset, datetime.datetime]
-        if _updated_at is None:
-            updated_at = None
-        elif isinstance(_updated_at, Unset):
+        if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
             updated_at = isoparse(_updated_at)

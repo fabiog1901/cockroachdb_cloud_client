@@ -1,6 +1,8 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Region")
 
@@ -12,10 +14,11 @@ class Region:
         internal_dns (str): internal_dns is the internal DNS name of the cluster within the cloud provider's network. It
             is used to connect to the cluster with PrivateLink or VPC peering.
         name (str):
-        node_count (int): node_count will be 0 for serverless clusters.
+        node_count (int): node_count will be 0 for Serverless clusters.
         sql_dns (str): sql_dns is the DNS name of SQL interface of the cluster. It is used to connect to the cluster
             with IP allowlisting.
         ui_dns (str): ui_dns is the DNS name used when connecting to the DB Console for the cluster.
+        primary (Union[Unset, bool]): primary is true only for the primary region in a Multi Region Serverless cluster.
     """
 
     internal_dns: str
@@ -23,6 +26,7 @@ class Region:
     node_count: int
     sql_dns: str
     ui_dns: str
+    primary: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -31,6 +35,7 @@ class Region:
         node_count = self.node_count
         sql_dns = self.sql_dns
         ui_dns = self.ui_dns
+        primary = self.primary
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -43,6 +48,8 @@ class Region:
                 "ui_dns": ui_dns,
             }
         )
+        if primary is not UNSET:
+            field_dict["primary"] = primary
 
         return field_dict
 
@@ -59,12 +66,15 @@ class Region:
 
         ui_dns = d.pop("ui_dns")
 
+        primary = d.pop("primary", UNSET)
+
         region = cls(
             internal_dns=internal_dns,
             name=name,
             node_count=node_count,
             sql_dns=sql_dns,
             ui_dns=ui_dns,
+            primary=primary,
         )
 
         region.additional_properties = d

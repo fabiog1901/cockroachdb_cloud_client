@@ -1,12 +1,15 @@
 import datetime
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 from dateutil.parser import isoparse
 
-from ..models.log_export_cluster_specification import LogExportClusterSpecification
 from ..models.log_export_status import LogExportStatus
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.log_export_cluster_specification import LogExportClusterSpecification
+
 
 T = TypeVar("T", bound="LogExportClusterInfo")
 
@@ -34,7 +37,7 @@ class LogExportClusterInfo:
 
     cluster_id: Union[Unset, str] = UNSET
     created_at: Union[Unset, datetime.datetime] = UNSET
-    spec: Union[Unset, LogExportClusterSpecification] = UNSET
+    spec: Union[Unset, "LogExportClusterSpecification"] = UNSET
     status: Union[Unset, LogExportStatus] = UNSET
     updated_at: Union[Unset, datetime.datetime] = UNSET
     user_message: Union[Unset, str] = UNSET
@@ -80,41 +83,35 @@ class LogExportClusterInfo:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.log_export_cluster_specification import LogExportClusterSpecification
+
         d = src_dict.copy()
         cluster_id = d.pop("cluster_id", UNSET)
 
         _created_at = d.pop("created_at", UNSET)
         created_at: Union[Unset, datetime.datetime]
-        if _created_at is None:
-            created_at = None
-        elif isinstance(_created_at, Unset):
+        if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _spec = d.pop("spec", UNSET)
         spec: Union[Unset, LogExportClusterSpecification]
-        if _spec is None:
-            spec = None
-        elif isinstance(_spec, Unset):
+        if isinstance(_spec, Unset):
             spec = UNSET
         else:
             spec = LogExportClusterSpecification.from_dict(_spec)
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, LogExportStatus]
-        if _status is None:
-            status = None
-        elif isinstance(_status, Unset):
+        if isinstance(_status, Unset):
             status = UNSET
         else:
             status = LogExportStatus(_status)
 
         _updated_at = d.pop("updated_at", UNSET)
         updated_at: Union[Unset, datetime.datetime]
-        if _updated_at is None:
-            updated_at = None
-        elif isinstance(_updated_at, Unset):
+        if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
             updated_at = isoparse(_updated_at)

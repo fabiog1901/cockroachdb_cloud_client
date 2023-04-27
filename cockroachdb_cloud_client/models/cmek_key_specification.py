@@ -57,9 +57,7 @@ class CMEKKeySpecification:
 
         _type = d.pop("type", UNSET)
         type: Union[Unset, CMEKKeyTypeEnumeratesTypesOfCustomerManagedKeys]
-        if _type is None:
-            type = None
-        elif isinstance(_type, Unset):
+        if isinstance(_type, Unset):
             type = UNSET
         else:
             type = CMEKKeyTypeEnumeratesTypesOfCustomerManagedKeys(_type)

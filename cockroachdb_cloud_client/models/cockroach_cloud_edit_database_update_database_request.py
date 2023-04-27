@@ -9,26 +9,22 @@ T = TypeVar("T", bound="CockroachCloudEditDatabaseUpdateDatabaseRequest")
 class CockroachCloudEditDatabaseUpdateDatabaseRequest:
     """
     Example:
-        {'new_name': 'example_new_database_name'}
+        {'name': 'example_database_name', 'new_name': 'example_new_database_name'}
 
     Attributes:
-        name (str):
         new_name (str):
     """
 
-    name: str
     new_name: str
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        name = self.name
         new_name = self.new_name
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "name": name,
                 "new_name": new_name,
             }
         )
@@ -38,12 +34,9 @@ class CockroachCloudEditDatabaseUpdateDatabaseRequest:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        name = d.pop("name")
-
         new_name = d.pop("new_name")
 
         cockroach_cloud_edit_database_update_database_request = cls(
-            name=name,
             new_name=new_name,
         )
 

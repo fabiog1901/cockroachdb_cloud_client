@@ -17,7 +17,9 @@ class KeysetPaginationRequest:
         as_of_time (Union[Unset, datetime.datetime]):
         limit (Union[Unset, int]):
         page (Union[Unset, str]):
-        sort_order (Union[Unset, SortOrder]):  - DESC: Sort in descending order. The default order is ascending.
+        sort_order (Union[Unset, SortOrder]):  - ASC: Sort in ascending order. This is the default unless otherwise
+            specified.
+             - DESC: Sort in descending order.
     """
 
     as_of_time: Union[Unset, datetime.datetime] = UNSET
@@ -56,9 +58,7 @@ class KeysetPaginationRequest:
         d = src_dict.copy()
         _as_of_time = d.pop("as_of_time", UNSET)
         as_of_time: Union[Unset, datetime.datetime]
-        if _as_of_time is None:
-            as_of_time = None
-        elif isinstance(_as_of_time, Unset):
+        if isinstance(_as_of_time, Unset):
             as_of_time = UNSET
         else:
             as_of_time = isoparse(_as_of_time)
@@ -69,9 +69,7 @@ class KeysetPaginationRequest:
 
         _sort_order = d.pop("sort_order", UNSET)
         sort_order: Union[Unset, SortOrder]
-        if _sort_order is None:
-            sort_order = None
-        elif isinstance(_sort_order, Unset):
+        if isinstance(_sort_order, Unset):
             sort_order = UNSET
         else:
             sort_order = SortOrder(_sort_order)

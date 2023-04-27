@@ -1,11 +1,16 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.cmek_region_specification import CMEKRegionSpecification
-from ..models.dedicated_cluster_update_specification_region_nodes import DedicatedClusterUpdateSpecificationRegionNodes
-from ..models.dedicated_hardware_update_specification import DedicatedHardwareUpdateSpecification
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.cmek_region_specification import CMEKRegionSpecification
+    from ..models.dedicated_cluster_update_specification_region_nodes import (
+        DedicatedClusterUpdateSpecificationRegionNodes,
+    )
+    from ..models.dedicated_hardware_update_specification import DedicatedHardwareUpdateSpecification
+
 
 T = TypeVar("T", bound="DedicatedClusterUpdateSpecification")
 
@@ -14,7 +19,7 @@ T = TypeVar("T", bound="DedicatedClusterUpdateSpecification")
 class DedicatedClusterUpdateSpecification:
     """
     Attributes:
-        cmek_region_specs (Union[Unset, List[CMEKRegionSpecification]]): This field should contain the CMEK specs for
+        cmek_region_specs (Union[Unset, List['CMEKRegionSpecification']]): This field should contain the CMEK specs for
             newly added regions. If a
             CMEK spec is provided for an existing region, the request is invalid and
             will fail.
@@ -25,9 +30,9 @@ class DedicatedClusterUpdateSpecification:
             GCP and "us-west-2" for AWS. Values represent the node count.
     """
 
-    cmek_region_specs: Union[Unset, List[CMEKRegionSpecification]] = UNSET
-    hardware: Union[Unset, DedicatedHardwareUpdateSpecification] = UNSET
-    region_nodes: Union[Unset, DedicatedClusterUpdateSpecificationRegionNodes] = UNSET
+    cmek_region_specs: Union[Unset, List["CMEKRegionSpecification"]] = UNSET
+    hardware: Union[Unset, "DedicatedHardwareUpdateSpecification"] = UNSET
+    region_nodes: Union[Unset, "DedicatedClusterUpdateSpecificationRegionNodes"] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -61,6 +66,12 @@ class DedicatedClusterUpdateSpecification:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.cmek_region_specification import CMEKRegionSpecification
+        from ..models.dedicated_cluster_update_specification_region_nodes import (
+            DedicatedClusterUpdateSpecificationRegionNodes,
+        )
+        from ..models.dedicated_hardware_update_specification import DedicatedHardwareUpdateSpecification
+
         d = src_dict.copy()
         cmek_region_specs = []
         _cmek_region_specs = d.pop("cmek_region_specs", UNSET)
@@ -71,18 +82,14 @@ class DedicatedClusterUpdateSpecification:
 
         _hardware = d.pop("hardware", UNSET)
         hardware: Union[Unset, DedicatedHardwareUpdateSpecification]
-        if _hardware is None:
-            hardware = None
-        elif isinstance(_hardware, Unset):
+        if isinstance(_hardware, Unset):
             hardware = UNSET
         else:
             hardware = DedicatedHardwareUpdateSpecification.from_dict(_hardware)
 
         _region_nodes = d.pop("region_nodes", UNSET)
         region_nodes: Union[Unset, DedicatedClusterUpdateSpecificationRegionNodes]
-        if _region_nodes is None:
-            region_nodes = None
-        elif isinstance(_region_nodes, Unset):
+        if isinstance(_region_nodes, Unset):
             region_nodes = UNSET
         else:
             region_nodes = DedicatedClusterUpdateSpecificationRegionNodes.from_dict(_region_nodes)

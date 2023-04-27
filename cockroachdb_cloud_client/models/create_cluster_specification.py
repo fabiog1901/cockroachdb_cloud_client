@@ -1,10 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.dedicated_cluster_create_specification import DedicatedClusterCreateSpecification
-from ..models.serverless_cluster_create_specification import ServerlessClusterCreateSpecification
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.dedicated_cluster_create_specification import DedicatedClusterCreateSpecification
+    from ..models.serverless_cluster_create_specification import ServerlessClusterCreateSpecification
+
 
 T = TypeVar("T", bound="CreateClusterSpecification")
 
@@ -17,8 +20,8 @@ class CreateClusterSpecification:
         serverless (Union[Unset, ServerlessClusterCreateSpecification]):
     """
 
-    dedicated: Union[Unset, DedicatedClusterCreateSpecification] = UNSET
-    serverless: Union[Unset, ServerlessClusterCreateSpecification] = UNSET
+    dedicated: Union[Unset, "DedicatedClusterCreateSpecification"] = UNSET
+    serverless: Union[Unset, "ServerlessClusterCreateSpecification"] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -42,21 +45,20 @@ class CreateClusterSpecification:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.dedicated_cluster_create_specification import DedicatedClusterCreateSpecification
+        from ..models.serverless_cluster_create_specification import ServerlessClusterCreateSpecification
+
         d = src_dict.copy()
         _dedicated = d.pop("dedicated", UNSET)
         dedicated: Union[Unset, DedicatedClusterCreateSpecification]
-        if _dedicated is None:
-            dedicated = None
-        elif isinstance(_dedicated, Unset):
+        if isinstance(_dedicated, Unset):
             dedicated = UNSET
         else:
             dedicated = DedicatedClusterCreateSpecification.from_dict(_dedicated)
 
         _serverless = d.pop("serverless", UNSET)
         serverless: Union[Unset, ServerlessClusterCreateSpecification]
-        if _serverless is None:
-            serverless = None
-        elif isinstance(_serverless, Unset):
+        if isinstance(_serverless, Unset):
             serverless = UNSET
         else:
             serverless = ServerlessClusterCreateSpecification.from_dict(_serverless)

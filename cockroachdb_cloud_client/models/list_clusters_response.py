@@ -1,10 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.cluster import Cluster
-from ..models.keyset_pagination_response import KeysetPaginationResponse
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.cluster import Cluster
+    from ..models.keyset_pagination_response import KeysetPaginationResponse
+
 
 T = TypeVar("T", bound="ListClustersResponse")
 
@@ -13,12 +16,12 @@ T = TypeVar("T", bound="ListClustersResponse")
 class ListClustersResponse:
     """
     Attributes:
-        clusters (List[Cluster]):
+        clusters (List['Cluster']):
         pagination (Union[Unset, KeysetPaginationResponse]):
     """
 
-    clusters: List[Cluster]
-    pagination: Union[Unset, KeysetPaginationResponse] = UNSET
+    clusters: List["Cluster"]
+    pagination: Union[Unset, "KeysetPaginationResponse"] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -46,6 +49,9 @@ class ListClustersResponse:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.cluster import Cluster
+        from ..models.keyset_pagination_response import KeysetPaginationResponse
+
         d = src_dict.copy()
         clusters = []
         _clusters = d.pop("clusters")
@@ -56,9 +62,7 @@ class ListClustersResponse:
 
         _pagination = d.pop("pagination", UNSET)
         pagination: Union[Unset, KeysetPaginationResponse]
-        if _pagination is None:
-            pagination = None
-        elif isinstance(_pagination, Unset):
+        if isinstance(_pagination, Unset):
             pagination = UNSET
         else:
             pagination = KeysetPaginationResponse.from_dict(_pagination)

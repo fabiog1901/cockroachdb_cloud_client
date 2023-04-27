@@ -1,8 +1,10 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.cmek_region_specification import CMEKRegionSpecification
+if TYPE_CHECKING:
+    from ..models.cmek_region_specification import CMEKRegionSpecification
+
 
 T = TypeVar("T", bound="CockroachCloudUpdateCMEKSpecCMEKClusterSpecification")
 
@@ -15,10 +17,10 @@ class CockroachCloudUpdateCMEKSpecCMEKClusterSpecification:
             'AWS_KMS', 'uri': 'arn:aws:kms:us-west-2:111122223333:key/id-of-kms-key'}, 'region': 'us-central1'}]}
 
     Attributes:
-        region_specs (List[CMEKRegionSpecification]):
+        region_specs (List['CMEKRegionSpecification']):
     """
 
-    region_specs: List[CMEKRegionSpecification]
+    region_specs: List["CMEKRegionSpecification"]
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -40,6 +42,8 @@ class CockroachCloudUpdateCMEKSpecCMEKClusterSpecification:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.cmek_region_specification import CMEKRegionSpecification
+
         d = src_dict.copy()
         region_specs = []
         _region_specs = d.pop("region_specs")

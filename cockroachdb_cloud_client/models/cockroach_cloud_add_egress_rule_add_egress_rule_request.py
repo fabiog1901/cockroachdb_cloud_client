@@ -12,8 +12,9 @@ class CockroachCloudAddEgressRuleAddEgressRuleRequest:
     """AddEgressRuleRequest is the input for the rpc AddEgressRule().
 
     Example:
-        {'cluster_id': '35c4abb2-bb66-46d7-afed-25ebef5ed100', 'description': 'some very descriptive stuff',
-            'destination': 'www.google.com', 'name': 'example-1', 'paths': ['/hello'], 'ports': [443, 80], 'type': 'FQDN'}
+        {'cluster_id': '35c4abb2-bb66-46d7-afed-25ebef5ed100', 'description': 'egress for GCP storage buckets',
+            'destination': 'storage.googleapis.com', 'name': 'roach-buckets', 'paths': ['/customer-managed-bucket-1/*',
+            '/customer-managed-bucket-2/*'], 'ports': [443, 80], 'type': 'FQDN'}
 
     Attributes:
         description (str): description is text that serves to document the rules purpose.

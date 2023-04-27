@@ -2,7 +2,7 @@ from typing import Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.api_cloud_provider import ApiCloudProvider
+from ..models.cloud_provider_type import CloudProviderType
 
 T = TypeVar("T", bound="CloudProviderRegion")
 
@@ -11,10 +11,10 @@ T = TypeVar("T", bound="CloudProviderRegion")
 class CloudProviderRegion:
     """
     Attributes:
-        distance (float):
+        distance (float): Distance in miles, based on client IP address.
         location (str):
         name (str):
-        provider (ApiCloudProvider):  - GCP: The Google Cloud Platform cloud provider.
+        provider (CloudProviderType):  - GCP: The Google Cloud Platform cloud provider.
              - AWS: The Amazon Web Services cloud provider.
         serverless (bool):
     """
@@ -22,7 +22,7 @@ class CloudProviderRegion:
     distance: float
     location: str
     name: str
-    provider: ApiCloudProvider
+    provider: CloudProviderType
     serverless: bool
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -57,7 +57,7 @@ class CloudProviderRegion:
 
         name = d.pop("name")
 
-        provider = ApiCloudProvider(d.pop("provider"))
+        provider = CloudProviderType(d.pop("provider"))
 
         serverless = d.pop("serverless")
 

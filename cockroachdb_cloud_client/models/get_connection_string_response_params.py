@@ -2,17 +2,16 @@ from typing import Any, Dict, List, Type, TypeVar
 
 import attr
 
-T = TypeVar("T", bound="CockroachCloudCreatePrivateEndpointServicesJsonBody")
+T = TypeVar("T", bound="GetConnectionStringResponseParams")
 
 
 @attr.s(auto_attribs=True)
-class CockroachCloudCreatePrivateEndpointServicesJsonBody:
-    """ """
+class GetConnectionStringResponseParams:
+    """params contains a list of individual key parameters for generating nonstandard connection strings."""
 
-    additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
+    additional_properties: Dict[str, str] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -22,19 +21,19 @@ class CockroachCloudCreatePrivateEndpointServicesJsonBody:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        cockroach_cloud_create_private_endpoint_services_json_body = cls()
+        get_connection_string_response_params = cls()
 
-        cockroach_cloud_create_private_endpoint_services_json_body.additional_properties = d
-        return cockroach_cloud_create_private_endpoint_services_json_body
+        get_connection_string_response_params.additional_properties = d
+        return get_connection_string_response_params
 
     @property
     def additional_keys(self) -> List[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> Any:
+    def __getitem__(self, key: str) -> str:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: Any) -> None:
+    def __setitem__(self, key: str, value: str) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

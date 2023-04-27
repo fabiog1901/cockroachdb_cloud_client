@@ -2,23 +2,28 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.aws_endpoint_connection_status import AWSEndpointConnectionStatus
+from ..models.client_ca_cert_status import ClientCACertStatus
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="CockroachCloudSetAwsEndpointConnectionStateJsonBody")
+T = TypeVar("T", bound="ClientCACertInfo")
 
 
 @attr.s(auto_attribs=True)
-class CockroachCloudSetAwsEndpointConnectionStateJsonBody:
+class ClientCACertInfo:
     """
-    Example:
-        {'status': 'ENDPOINT_AVAILABLE'}
-
     Attributes:
-        status (Union[Unset, AWSEndpointConnectionStatus]): The statuses map to the statuses returned by the AWS API.
+        status (Union[Unset, ClientCACertStatus]):  - UNKNOWN_STATUS: UNKNOWN should never be used; if it is used, it
+            indicates a bug.
+             - NOT_SET: NOT_SET indicates a client CA cert is not set on the cluster.
+            New clusters won't have a client CA cert set.
+             - IS_SET: IS_SET indicates a client CA cert is set on the cluster.
+             - PENDING: PENDING indicates a client CA cert update is in flight on the cluster.
+             - FAILED: FAILED indicates a client CA cert update was attempted, but failed.
+        x509_pem_cert (Union[Unset, str]):
     """
 
-    status: Union[Unset, AWSEndpointConnectionStatus] = UNSET
+    status: Union[Unset, ClientCACertStatus] = UNSET
+    x509_pem_cert: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -26,11 +31,15 @@ class CockroachCloudSetAwsEndpointConnectionStateJsonBody:
         if not isinstance(self.status, Unset):
             status = self.status.value
 
+        x509_pem_cert = self.x509_pem_cert
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if status is not UNSET:
             field_dict["status"] = status
+        if x509_pem_cert is not UNSET:
+            field_dict["x509_pem_cert"] = x509_pem_cert
 
         return field_dict
 
@@ -38,20 +47,21 @@ class CockroachCloudSetAwsEndpointConnectionStateJsonBody:
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AWSEndpointConnectionStatus]
-        if _status is None:
-            status = None
-        elif isinstance(_status, Unset):
+        status: Union[Unset, ClientCACertStatus]
+        if isinstance(_status, Unset):
             status = UNSET
         else:
-            status = AWSEndpointConnectionStatus(_status)
+            status = ClientCACertStatus(_status)
 
-        cockroach_cloud_set_aws_endpoint_connection_state_json_body = cls(
+        x509_pem_cert = d.pop("x509_pem_cert", UNSET)
+
+        client_ca_cert_info = cls(
             status=status,
+            x509_pem_cert=x509_pem_cert,
         )
 
-        cockroach_cloud_set_aws_endpoint_connection_state_json_body.additional_properties = d
-        return cockroach_cloud_set_aws_endpoint_connection_state_json_body
+        client_ca_cert_info.additional_properties = d
+        return client_ca_cert_info
 
     @property
     def additional_keys(self) -> List[str]:

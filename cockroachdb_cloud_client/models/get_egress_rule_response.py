@@ -1,8 +1,10 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.egress_rule import EgressRule
+if TYPE_CHECKING:
+    from ..models.egress_rule import EgressRule
+
 
 T = TypeVar("T", bound="GetEgressRuleResponse")
 
@@ -15,7 +17,7 @@ class GetEgressRuleResponse:
         rule (EgressRule): EgressRule represents a network egress rule.
     """
 
-    rule: EgressRule
+    rule: "EgressRule"
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -33,6 +35,8 @@ class GetEgressRuleResponse:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.egress_rule import EgressRule
+
         d = src_dict.copy()
         rule = EgressRule.from_dict(d.pop("rule"))
 

@@ -2,8 +2,8 @@ from enum import Enum
 
 
 class ClusterStateType(str, Enum):
-    CREATING = "CREATING"
     CREATED = "CREATED"
+    CREATING = "CREATING"
     CREATION_FAILED = "CREATION_FAILED"
     DELETED = "DELETED"
     LOCKED = "LOCKED"

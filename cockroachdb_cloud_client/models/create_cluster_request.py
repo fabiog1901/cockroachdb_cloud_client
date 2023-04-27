@@ -1,9 +1,12 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.api_cloud_provider import ApiCloudProvider
-from ..models.create_cluster_specification import CreateClusterSpecification
+from ..models.cloud_provider_type import CloudProviderType
+
+if TYPE_CHECKING:
+    from ..models.create_cluster_specification import CreateClusterSpecification
+
 
 T = TypeVar("T", bound="CreateClusterRequest")
 
@@ -18,14 +21,14 @@ class CreateClusterRequest:
     Attributes:
         name (str): Name must be 6-20 characters in length and can include numbers,
             lowercase letters, and dashes (but no leading or trailing dashes).
-        provider (ApiCloudProvider):  - GCP: The Google Cloud Platform cloud provider.
+        provider (CloudProviderType):  - GCP: The Google Cloud Platform cloud provider.
              - AWS: The Amazon Web Services cloud provider.
         spec (CreateClusterSpecification):
     """
 
     name: str
-    provider: ApiCloudProvider
-    spec: CreateClusterSpecification
+    provider: CloudProviderType
+    spec: "CreateClusterSpecification"
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -48,10 +51,12 @@ class CreateClusterRequest:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.create_cluster_specification import CreateClusterSpecification
+
         d = src_dict.copy()
         name = d.pop("name")
 
-        provider = ApiCloudProvider(d.pop("provider"))
+        provider = CloudProviderType(d.pop("provider"))
 
         spec = CreateClusterSpecification.from_dict(d.pop("spec"))
 

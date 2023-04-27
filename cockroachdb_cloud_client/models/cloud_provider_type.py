@@ -1,9 +1,9 @@
 from enum import Enum
 
 
-class NodeStatus(str, Enum):
-    LIVE = "LIVE"
-    NOT_READY = "NOT_READY"
+class CloudProviderType(str, Enum):
+    AWS = "AWS"
+    GCP = "GCP"
 
     def __str__(self) -> str:
         return str(self.value)

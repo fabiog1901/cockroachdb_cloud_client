@@ -1,10 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.cmek_region_info import CMEKRegionInfo
 from ..models.cmek_status import CMEKStatus
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.cmek_region_info import CMEKRegionInfo
+
 
 T = TypeVar("T", bound="CMEKClusterInfo")
 
@@ -15,7 +18,7 @@ class CMEKClusterInfo:
     including within each one its regions.
 
         Attributes:
-            region_infos (Union[Unset, List[CMEKRegionInfo]]):
+            region_infos (Union[Unset, List['CMEKRegionInfo']]):
             status (Union[Unset, CMEKStatus]): CMEKStatus describes the current status of CMEK for an entire CRDB cluster
                 or a CMEK key within a region.
 
@@ -46,7 +49,7 @@ class CMEKClusterInfo:
                 when CMEK has failed to be revoked.
     """
 
-    region_infos: Union[Unset, List[CMEKRegionInfo]] = UNSET
+    region_infos: Union[Unset, List["CMEKRegionInfo"]] = UNSET
     status: Union[Unset, CMEKStatus] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -75,6 +78,8 @@ class CMEKClusterInfo:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.cmek_region_info import CMEKRegionInfo
+
         d = src_dict.copy()
         region_infos = []
         _region_infos = d.pop("region_infos", UNSET)
@@ -85,9 +90,7 @@ class CMEKClusterInfo:
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, CMEKStatus]
-        if _status is None:
-            status = None
-        elif isinstance(_status, Unset):
+        if isinstance(_status, Unset):
             status = UNSET
         else:
             status = CMEKStatus(_status)

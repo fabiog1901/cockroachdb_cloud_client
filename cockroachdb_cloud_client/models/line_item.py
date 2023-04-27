@@ -1,9 +1,12 @@
-from typing import Any, Dict, List, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..models.currency_amount import CurrencyAmount
 from ..models.quantity_unit_type import QuantityUnitType
+
+if TYPE_CHECKING:
+    from ..models.currency_amount import CurrencyAmount
+
 
 T = TypeVar("T", bound="LineItem")
 
@@ -14,8 +17,7 @@ class LineItem:
     Attributes:
         description (str): description contains the details of the line item (i.e t3 micro).
         quantity (float): quantity is the number of the specific line items used.
-        quantity_unit (QuantityUnitType): Billing
-            QuantityUnitType is the unit type for a quantity of billing line item.
+        quantity_unit (QuantityUnitType):
         total (CurrencyAmount):
         unit_cost (float): unit_cost is the cost per unit of line item.
     """
@@ -23,7 +25,7 @@ class LineItem:
     description: str
     quantity: float
     quantity_unit: QuantityUnitType
-    total: CurrencyAmount
+    total: "CurrencyAmount"
     unit_cost: float
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -52,6 +54,8 @@ class LineItem:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.currency_amount import CurrencyAmount
+
         d = src_dict.copy()
         description = d.pop("description")
 

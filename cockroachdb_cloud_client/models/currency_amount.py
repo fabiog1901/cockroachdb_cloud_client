@@ -2,7 +2,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.currency import Currency
+from ..models.currency_type import CurrencyType
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CurrencyAmount")
@@ -12,12 +12,15 @@ T = TypeVar("T", bound="CurrencyAmount")
 class CurrencyAmount:
     """
     Attributes:
-        amount (Union[Unset, float]): amount is the quantity of currency.
-        currency (Union[Unset, Currency]): Currency is the set of currencies supported in CockroachDB Cloud.
+        amount (Union[Unset, float]): amount is the quantity of currency. Internally, currency amounts are tracked
+            and stored using an arbitrary-precision decimal representation, but are serialized
+            as 64-bit floating point numbers. There may be minor rounding discrepancies
+            when parsed as a 32-bit float.
+        currency (Union[Unset, CurrencyType]):
     """
 
     amount: Union[Unset, float] = UNSET
-    currency: Union[Unset, Currency] = UNSET
+    currency: Union[Unset, CurrencyType] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -42,13 +45,11 @@ class CurrencyAmount:
         amount = d.pop("amount", UNSET)
 
         _currency = d.pop("currency", UNSET)
-        currency: Union[Unset, Currency]
-        if _currency is None:
-            currency = None
-        elif isinstance(_currency, Unset):
+        currency: Union[Unset, CurrencyType]
+        if isinstance(_currency, Unset):
             currency = UNSET
         else:
-            currency = Currency(_currency)
+            currency = CurrencyType(_currency)
 
         currency_amount = cls(
             amount=amount,

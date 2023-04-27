@@ -1,10 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.keyset_pagination_response import KeysetPaginationResponse
-from ..models.sql_user import SQLUser
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.keyset_pagination_response import KeysetPaginationResponse
+    from ..models.sql_user import SQLUser
+
 
 T = TypeVar("T", bound="ListSQLUsersResponse")
 
@@ -13,12 +16,12 @@ T = TypeVar("T", bound="ListSQLUsersResponse")
 class ListSQLUsersResponse:
     """
     Attributes:
-        users (List[SQLUser]):
+        users (List['SQLUser']):
         pagination (Union[Unset, KeysetPaginationResponse]):
     """
 
-    users: List[SQLUser]
-    pagination: Union[Unset, KeysetPaginationResponse] = UNSET
+    users: List["SQLUser"]
+    pagination: Union[Unset, "KeysetPaginationResponse"] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -46,6 +49,9 @@ class ListSQLUsersResponse:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.keyset_pagination_response import KeysetPaginationResponse
+        from ..models.sql_user import SQLUser
+
         d = src_dict.copy()
         users = []
         _users = d.pop("users")
@@ -56,9 +62,7 @@ class ListSQLUsersResponse:
 
         _pagination = d.pop("pagination", UNSET)
         pagination: Union[Unset, KeysetPaginationResponse]
-        if _pagination is None:
-            pagination = None
-        elif isinstance(_pagination, Unset):
+        if isinstance(_pagination, Unset):
             pagination = UNSET
         else:
             pagination = KeysetPaginationResponse.from_dict(_pagination)
